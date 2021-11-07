@@ -1,0 +1,15 @@
+{
+  "name": "XiaoYu作品",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "调戏百度一下！",
+  "browser_action": {
+    "default_icon": "D:/github/hotpoor_autoclick_xhs/wang/0.1.1_0/images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.baidu.com/*"],
+      "js": ["script.js"]
+    }
+  ]
+}
