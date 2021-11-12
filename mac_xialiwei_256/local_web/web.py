@@ -30,6 +30,7 @@ application = tornado.web.Application([
         (r"/demo/article",tool_article.ArticleDemoHandler),
         (r"/demo/video",tool_video.VideoDemoHandler),
         (r"/api/tool/video/get_one",tool_video.GetVideoOneAPIHandler),
+        (r"/api/tool/article/make_video",tool_article.MakeVideoArticleAPIHandler),
         (r"/api/tool/article/get_info",tool_article.GetArticleInfoAPIHandler),
         (r"/api/tool/article/get_json",tool_article.GetArticleJsonAPIHandler),
         (r"/static/(.*)", tornado.web.StaticFileHandler, dict(path=settings['static_path'])),
