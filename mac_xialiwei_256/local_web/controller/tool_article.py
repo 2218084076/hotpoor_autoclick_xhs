@@ -73,7 +73,7 @@ import base64
 @tornado.gen.coroutine
 def get_article_info(short_link):
     # short_link = argv_dir.get("--link",None)
-    print("short_link:",short_link)
+    print("\nshort_link:\t",short_link)
     browser = webdriver.Chrome()
     browser.get(short_link)
     time.sleep(3)
@@ -90,7 +90,7 @@ def get_article_info(short_link):
         headimgurl_parent = browser.find_element_by_class_name("author-item")
         headimgurl = headimgurl_parent.find_element_by_class_name("author-info").find_element_by_class_name("left-img").find_elements_by_tag_name("img")[0].get_attribute("src")
         aim_url = headimgurl
-        print(aim_url)
+        print('\n',aim_url)
         aim_response = requests.get(aim_url)
         f = open(os.path.join(os.path.dirname(__file__),'../static/upload/%s_%s.%s'%(t,"head","jpg")), "ab")
         f.write(aim_response.content)  # 多媒体存储content
@@ -126,7 +126,7 @@ def get_article_info(short_link):
         for div_i_img in div_i_imgs:
             link ="https://%s?imageView2/2/w/1080/format/jpg"%(div_i_img.get_attribute("style").split("https://")[1].split("?imageView2/2/")[0])
             aim_url = link
-            print(aim_url)
+            print('\naim_url\t',aim_url)
             aim_response = requests.get(aim_url)
             f = open(os.path.join(os.path.dirname(__file__),'../static/upload/%s_%s.%s'%(t,num,"jpg")), "ab")
             f.write(aim_response.content)  # 多媒体存储content
