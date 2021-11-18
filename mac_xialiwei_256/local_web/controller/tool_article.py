@@ -76,6 +76,7 @@ def get_article_info(short_link):
     print("\nshort_link:\t",short_link)
     browser = webdriver.Chrome()
     browser.get(short_link)
+    browser.minimize_window()
     time.sleep(3)
     small_pic = browser.find_element_by_class_name("small-pic")
     div_i_imgs = small_pic.find_elements_by_tag_name("i")
@@ -137,9 +138,11 @@ def get_article_info(short_link):
         title = browser.find_element_by_class_name("title").text
         content = browser.find_element_by_class_name("content").text
         browser.find_element_by_class_name("author-item").find_element_by_class_name("author-info").click()
+        browser.minimize_window()
         time.sleep(3)
         browser.switch_to.window(browser.window_handles[1])
         user_xhs = browser.current_url.split("/user/profile/")[1]
+        browser.minimize_window()
         result = {
             "short_link":short_link,
             "type":"news",
