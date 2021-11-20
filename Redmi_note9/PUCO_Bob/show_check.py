@@ -92,94 +92,99 @@ if not is_debug:
 is_browser_count_max = 5
 is_browser_count = 0
 while True:
-    if is_debug:
-        base_img = cv.imread(get_android_img(),0)
-        action_now = get_check_result(base_img)
-        print(action_now)
-        cv.imshow("img",base_img)
-        key = cv.waitKey(1)
-        if key == ord("q"):
-            break
-    else:
-        if not is_doing:
-            base_img = cv.imread(get_android_img(),0)
-            action_now = get_check_result(base_img)
-            if action_now in ["news","video","shop","list"]:
-                is_doing = True
-            cv.imshow("img",base_img)
-            key = cv.waitKey(1)
-            if key == ord("q"):
-                break
-        else:
-            if action_now in ["list"]:
-                if is_left:
-                    os.system("adb shell input swipe 340 800 340 500 1000")
-                    os.system("adb shell input tap 340 500")
-                    is_left = False
-                else:
-                    os.system("adb shell input tap 800 500")
-                    is_left = True
-                os.system("sleep 2")
-            elif action_now in ["shop"]:
-                os.system("adb shell input tap 55 150")
-                os.system("sleep 1")
-            elif action_now in ["news"]:
-                os.system("adb shell input tap 1000 155")
-                os.system("sleep 1")
-                os.system("adb shell input tap 380 1876")
-                os.system("sleep 2")
-                os.system("adb shell monkey -p com.android.browser -c android.intent.category.LAUNCHER 1")
-                if is_browser_count == 0:
-                    is_browser_count += 1
-                    os.system("adb shell input tap 970 146")
-                    os.system("sleep 4")
-                elif is_browser_count > is_browser_count_max:
-                    is_browser_count = 0
-                    os.system("adb shell input tap 970 146")
-                    os.system("sleep 4")
-                else:
-                    is_browser_count += 1
-                    os.system("sleep 2")
-                # os.system("adb shell input swipe 330 780 330 780 1000")
-                os.system("adb shell input tap 330 780")
-                os.system("sleep 2")
-                os.system("adb shell input tap 398 1520")
-                os.system("sleep 2")
-                os.system("adb shell input tap 680 400")
-                os.system("sleep 1")
-                os.system("adb shell input tap 300 940")
-                os.system("sleep 2")
-                os.system("adb shell monkey -p com.xingin.xhs -c android.intent.category.LAUNCHER 1")
-                os.system("adb shell input tap 55 150")
-            elif action_now in ["video"]:
-                os.system("adb shell input tap 1000 155")
-                os.system("sleep 1")
-                os.system("adb shell input tap 523 1876")
-                os.system("sleep 2")
-                os.system("adb shell monkey -p com.android.browser -c android.intent.category.LAUNCHER 1")
-                if is_browser_count == 0:
-                    is_browser_count += 1
-                    os.system("adb shell input tap 970 146")
-                    os.system("sleep 4")
-                elif is_browser_count > is_browser_count_max:
-                    is_browser_count = 0
-                    os.system("adb shell input tap 970 146")
-                    os.system("sleep 4")
-                else:
-                    is_browser_count += 1
-                    os.system("sleep 2")
-                # os.system("adb shell input swipe 330 780 330 780 1000")
-                os.system("adb shell input tap 750 780")
-                os.system("sleep 2")
-                os.system("adb shell input tap 398 1520")
-                os.system("sleep 2")
-                os.system("adb shell input tap 680 400")
-                os.system("sleep 1")
-                os.system("adb shell input tap 730 940")
-                os.system("sleep 2")
-                os.system("adb shell monkey -p com.xingin.xhs -c android.intent.category.LAUNCHER 1")
-                os.system("adb shell input tap 55 150")
-            is_doing = False
+    base_img = cv.imread(get_android_img(), 0)
+    action_now = get_check_result(base_img)
+    print(action_now)
+    cv.imshow("img", base_img)
+
+    # if is_debug:
+    #     base_img = cv.imread(get_android_img(),0)
+    #     action_now = get_check_result(base_img)
+    #     print(action_now)
+    #     cv.imshow("img",base_img)
+    #     key = cv.waitKey(1)
+    #     if key == ord("q"):
+    #         break
+    # else:
+    #     if not is_doing:
+    #         base_img = cv.imread(get_android_img(),0)
+    #         action_now = get_check_result(base_img)
+    #         if action_now in ["news","video","shop","list"]:
+    #             is_doing = True
+    #         cv.imshow("img",base_img)
+    #         key = cv.waitKey(1)
+    #         if key == ord("q"):
+    #             break
+    #     else:
+    #         if action_now in ["list"]:
+    #             if is_left:
+    #                 os.system("adb shell input swipe 340 800 340 500 1000")
+    #                 os.system("adb shell input tap 340 500")
+    #                 is_left = False
+    #             else:
+    #                 os.system("adb shell input tap 800 500")
+    #                 is_left = True
+    #             os.system("sleep 2")
+    #         elif action_now in ["shop"]:
+    #             os.system("adb shell input tap 55 150")
+    #             os.system("sleep 1")
+    #         elif action_now in ["news"]:
+    #             os.system("adb shell input tap 1000 155")
+    #             os.system("sleep 1")
+    #             os.system("adb shell input tap 380 1876")
+    #             os.system("sleep 2")
+    #             os.system("adb shell monkey -p com.android.browser -c android.intent.category.LAUNCHER 1")
+    #             if is_browser_count == 0:
+    #                 is_browser_count += 1
+    #                 os.system("adb shell input tap 970 146")
+    #                 os.system("sleep 4")
+    #             elif is_browser_count > is_browser_count_max:
+    #                 is_browser_count = 0
+    #                 os.system("adb shell input tap 970 146")
+    #                 os.system("sleep 4")
+    #             else:
+    #                 is_browser_count += 1
+    #                 os.system("sleep 2")
+    #             # os.system("adb shell input swipe 330 780 330 780 1000")
+    #             os.system("adb shell input tap 330 780")
+    #             os.system("sleep 2")
+    #             os.system("adb shell input tap 398 1520")
+    #             os.system("sleep 2")
+    #             os.system("adb shell input tap 680 400")
+    #             os.system("sleep 1")
+    #             os.system("adb shell input tap 300 940")
+    #             os.system("sleep 2")
+    #             os.system("adb shell monkey -p com.xingin.xhs -c android.intent.category.LAUNCHER 1")
+    #             os.system("adb shell input tap 55 150")
+    #         elif action_now in ["video"]:
+    #             os.system("adb shell input tap 1000 155")
+    #             os.system("sleep 1")
+    #             os.system("adb shell input tap 523 1876")
+    #             os.system("sleep 2")
+    #             os.system("adb shell monkey -p com.android.browser -c android.intent.category.LAUNCHER 1")
+    #             if is_browser_count == 0:
+    #                 is_browser_count += 1
+    #                 os.system("adb shell input tap 970 146")
+    #                 os.system("sleep 4")
+    #             elif is_browser_count > is_browser_count_max:
+    #                 is_browser_count = 0
+    #                 os.system("adb shell input tap 970 146")
+    #                 os.system("sleep 4")
+    #             else:
+    #                 is_browser_count += 1
+    #                 os.system("sleep 2")
+    #             # os.system("adb shell input swipe 330 780 330 780 1000")
+    #             os.system("adb shell input tap 750 780")
+    #             os.system("sleep 2")
+    #             os.system("adb shell input tap 398 1520")
+    #             os.system("sleep 2")
+    #             os.system("adb shell input tap 680 400")
+    #             os.system("sleep 1")
+    #             os.system("adb shell input tap 730 940")
+    #             os.system("sleep 2")
+    #             os.system("adb shell monkey -p com.xingin.xhs -c android.intent.category.LAUNCHER 1")
+    #             os.system("adb shell input tap 55 150")
+    #         is_doing = False
 
 
 cv.destroyAllWindows()
