@@ -82,7 +82,7 @@ def get_article_info(short_link):
     div_i_imgs = small_pic.find_elements_by_tag_name("i")
     num = 0
     image_links = []
-    t = int(round(time.time() * 1000))  # 毫秒级时间戳
+    # t = int(round(time.time() * 1000))  # 毫秒级时间戳
     t = browser.current_url.split("/")[5].split("?")[0]
     t_is_exists = os.path.exists(os.path.join(os.path.dirname(__file__),'../static/files/%s.%s'%(t,"json")))
 

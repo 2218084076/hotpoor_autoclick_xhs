@@ -26,22 +26,23 @@ class GetVideoOneAPIHandler(tornado.web.RequestHandler):
             return
         aim_url = url
         print("download:",aim_url)
-        # aim_response = requests.get(aim_url)
+        aim_response = requests.get(aim_url)
         # t = int(round(time.time() * 1000))  # 毫秒级时间戳
-        # f = open(os.path.join(os.path.dirname(__file__),'../static/video/%s.%s'%(time.time(),"mp4")), "ab")
-        # f.write(aim_response.content)  # 多媒体存储content
-        # f.close()
+        t = browser.current_url.split("/")[5].split("?")[0]
+        f = open(os.path.join(os.path.dirname(__file__),'../static/video/%s.%s'%(time.time(),"mp4")), "ab")
+        f.write(aim_response.content)  # 多媒体存储content
+        f.close()
 
-        # url = aim_url
-        # localfile = os.path.join(os.path.dirname(__file__), "../static/video/%s.%s" % (time.time(),"mp4"))
-        # urllib.request.urlretrieve(url, localfile, Schedule)
+        url = aim_url
+        localfile = os.path.join(os.path.dirname(__file__), "../static/video/%s.%s" % (time.time(),"mp4"))
+        urllib.request.urlretrieve(url, localfile, Schedule)
 
-        # print("download:",aim_url)
-        # aim_response = requests.get(aim_url)
-        # t = int(round(time.time() * 1000))  # 毫秒级时间戳
-        # f = open(os.path.join(os.path.dirname(__file__),'../static/video/%s.%s'%(time.time(),"mp4")), "ab")
-        # f.write(aim_response.content)  # 多媒体存储content
-        # f.close()
+        print("download:",aim_url)
+        aim_response = requests.get(aim_url)
+        t = browser.current_url.split("/")[5].split("?")[0]
+        f = open(os.path.join(os.path.dirname(__file__),'../static/video/%s.%s'%(time.time(),"mp4")), "ab")
+        f.write(aim_response.content)  # 多媒体存储content
+        f.close()
         http_client = tornado.httpclient.AsyncHTTPClient()
         http_header = {'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36'}
         response = yield http_client.fetch(url, headers=http_header,method='GET', body=None)
