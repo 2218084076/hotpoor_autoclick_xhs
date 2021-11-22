@@ -136,6 +136,7 @@ def get_article_info(short_link):
             num +=1
         print(num)
         title = browser.find_element_by_class_name("title").text
+        title = '集美手账'+title
         content = browser.find_element_by_class_name("content").text
         browser.find_element_by_class_name("author-item").find_element_by_class_name("author-info").click()
         browser.minimize_window()
@@ -193,11 +194,11 @@ class MakeVideoArticleAPIHandler(tornado.web.RequestHandler):
         for img_path in img_remove_list:
             os.remove(img_path)
         self.finish({"info":"ok","video":"/static/temp/%s.mp4"%(t)})
-        print('====上传====')
-        os.system('adb push D:\github\hotpoor_autoclick_xhs\mac_xialiwei_256\local_web\static\temp\%s.mp4 /sdcard/DCIM/Camera'%(t))
-        time.sleep(4)
-        os.system('adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Camera/')
-        time.sleep(4)
+        # print('====上传====')
+        # os.system('adb push D:\github\hotpoor_autoclick_xhs\mac_xialiwei_256\local_web\static\temp\%s.mp4 /sdcard/DCIM/Camera'%(t))
+        # time.sleep(4)
+        # os.system('adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Camera/')
+        # time.sleep(4)
 
 class ArticleDemoHandler(tornado.web.RequestHandler):
     def get(self):
