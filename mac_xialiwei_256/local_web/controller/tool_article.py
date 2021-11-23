@@ -11,7 +11,7 @@ import tornado.escape
 from tornado.escape import json_encode, json_decode
 import urllib
 import urllib.request
-
+from random import randrange
 import sys
 from selenium import webdriver
 import time
@@ -136,7 +136,9 @@ def get_article_info(short_link):
             num +=1
         print(num)
         title = browser.find_element_by_class_name("title").text
-        title = '集美手账'+title
+        a = randrange(0,(len(title)-1))
+        title = title.replace(title[a],'唇釉💄口红',1)
+        title = '集美手账| '+title
         content = browser.find_element_by_class_name("content").text
         browser.find_element_by_class_name("author-item").find_element_by_class_name("author-info").click()
         browser.minimize_window()
