@@ -136,15 +136,15 @@ def get_article_info(short_link):
             num +=1
         print(num)
         title = browser.find_element_by_class_name("title").text
-        # a = randrange(0,(len(title)-1))
-        # title = title.replace(title[a],'|',1)
-        title = '唇釉💄口红'+title
+        title = title + 'kuai团团'
+        a = randrange(0,(len(title)-1))
+        title = title.replace(title[a],'!唇釉💄口红!!',1)
 
         # content = browser.find_element_by_class_name("content").text
-        content = '快团团♥♥国货界沧海遗珠！\n奶欲低饱和度氛围感美女速进‼\n质地丝滑✅上嘴好推开✅显色极高✅不显唇纹✅不拔干✅ \n| #小程序//快团团 '
+        content = '快团团!!国货界沧海遗珠!奶欲低饱和度氛围感美女速进‼质地丝滑!上嘴好推开!显色极高!不显唇纹!不拔干!小程序!!快团团 '
         
-        a = random.randrange(0,len(content.split('✅')))
-        content = content.replace(content.split('✅')[a], ' 💄慕斯唇泥⦘直接封神‼ ', 1)
+        a = random.randrange(0,len(content.split('!')))
+        content = content.replace(content.split('!')[a], ' 💄慕斯唇泥直接封神‼ ', 1)
         browser.find_element_by_class_name("author-item").find_element_by_class_name("author-info").click()
         browser.minimize_window()
         time.sleep(3)
