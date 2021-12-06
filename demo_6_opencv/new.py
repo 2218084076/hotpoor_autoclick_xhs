@@ -3,7 +3,7 @@ import time
 import random
 import json
 
-title_text = ['💄口红!试色','氛围感','♥国货好物|口红','唇釉💄试色','火速收藏👍',]
+title_text = ['口红💄秋冬分享','口红','氛围感','♥国货好物|口红','唇釉💄试色','火速收藏👍','试色']
 content_text = [
                 'YSL_12_Corail&&💄YSL_80_Chili',
                 'Mac_chili💄Mac_Marrakesh&&Mac_Ruby_woo💄Mac_Dubonnet',
@@ -18,10 +18,12 @@ content_text = [
                 '放大优点妆🍓',
                 '上试色笔记📒',
                 '冬季暖心季',
-                '收集喜欢的口红唇釉制作成手帐,分享给集美们'
+                '收集喜欢的口红唇釉制作成手帐,分享给集美们',
+                '朋友涂过都赞不绝口'
                 ]
-system_list = ['adb -s 869e65410721 shell input tap 306 411',
-               'adb -s 869e65410721 shell input tap 675 411',
+system_list = [
+    'adb -s 869e65410721 shell input tap 306 411',
+    'adb -s 869e65410721 shell input tap 675 411'
                ]
 
 json_files = r'D:\github\1\hotpoor_autoclick_xhs\mac_xialiwei_256\local_web\static\files'
@@ -83,7 +85,7 @@ for a,b,c,d in zip(one,two,three,original_list):
         time.sleep(0.5)
         print(i)
     os.system('adb -s 869e65410721 shell input tap 1037 411')
-
+    os.system('adb -s 869e65410721 shell input tap 311 758')
     print('下一步\n')
     os.system("adb -s 869e65410721 shell input tap 931 2144")
     time.sleep(2)
@@ -148,7 +150,7 @@ for a,b,c,d in zip(one,two,three,original_list):
     print('start\n')
     print(id)
     i = 1
-
+    print(a, b, c, d)
     while i < 30:
         x1 = random.randint(86, 482)
         y1 = random.randint(1172, 1629)
@@ -165,3 +167,8 @@ for a,b,c,d in zip(one,two,three,original_list):
     print(f"{id}\tEnd")
     print(f"num{num}")
     num += 1
+    os.system("adb -s 869e65410721 shell input tap 766 2261")
+    time.sleep(0.5)
+    os.system("adb -s 869e65410721 shell input tap 766 2261")
+    os.system("adb -s 869e65410721 shell input tap 766 2261")
+    os.system("adb -s 869e65410721 shell input tap 766 2261")
