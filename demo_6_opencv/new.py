@@ -3,20 +3,26 @@ import time
 import random
 import json
 
-title_text = ['放大优点妆🍓','💄口红💄试色','氛围感','♥民族国货好物','唇釉💄试色','share',]
+title_text = ['💄口红!试色','氛围感','♥国货好物|口红','唇釉💄试色','火速收藏👍',]
 content_text = [
-                'YSL_12_Corail||💄YSL_80_Chili',
-                'Mac_chili|Mac_Marrakesh|Mac_Ruby_woo|Mac_Dubonnet',
+                'YSL_12_Corail&&💄YSL_80_Chili',
+                'Mac_chili💄Mac_Marrakesh&&Mac_Ruby_woo💄Mac_Dubonnet',
                 '优秀国货_美妆新试色',
-                '圣诞好物推荐🎄',
                 '一支带有细闪,有一点点颗粒感很滋润的茶棕色,偏暖的颜色~比较气质低调优雅',
-                '一点都不沉闷',
-                '一年四季几乎都爱这种暖暖的奶茶色系',
                 '‼百里挑一的绝美色号',
                 '私藏的绝美色号',
                 '无可挑剔的口红单品',
-                '又是一个氛围感爆炸的'
+                '又是一个氛围感爆炸的',
+                '达人推荐',
+                '很显气质的一只',
+                '放大优点妆🍓',
+                '上试色笔记📒',
+                '冬季暖心季',
+                '收集喜欢的口红唇釉制作成手帐,分享给集美们'
                 ]
+system_list = ['adb -s 869e65410721 shell input tap 306 411',
+               'adb -s 869e65410721 shell input tap 675 411',
+               ]
 
 json_files = r'D:\github\1\hotpoor_autoclick_xhs\mac_xialiwei_256\local_web\static\files'
 
@@ -70,13 +76,14 @@ for a,b,c,d in zip(one,two,three,original_list):
     time.sleep(5)
     print("选择图片\n")
 
-    os.system("adb -s 869e65410721 shell input tap 306 411")
-    time.sleep(0.5)
-    os.system("adb -s 869e65410721 shell input tap 675 411") #puco
-    time.sleep(0.5)
-    os.system("adb -s 869e65410721 shell input tap 1037 411")
-    time.sleep(0.5)
-    os.system("adb -s 869e65410721 shell input tap 311 758")
+    system = random.shuffle(system_list)
+    system = system_list[:2]
+    for i in system:
+        os.system(f'{i}')
+        time.sleep(0.5)
+        print(i)
+    os.system('adb -s 869e65410721 shell input tap 1037 411')
+
     print('下一步\n')
     os.system("adb -s 869e65410721 shell input tap 931 2144")
     time.sleep(2)
@@ -86,7 +93,7 @@ for a,b,c,d in zip(one,two,three,original_list):
     print('等待文案\n')
 
     title = random.shuffle(title_text)
-    title = title_text[:4]
+    title = title_text[:3]
 
     content = random.shuffle(content_text)
     content = content_text[4:]
@@ -141,7 +148,7 @@ for a,b,c,d in zip(one,two,three,original_list):
     print('start\n')
     print(id)
     i = 1
-    print(a, b, c, d)
+
     while i < 30:
         x1 = random.randint(86, 482)
         y1 = random.randint(1172, 1629)
