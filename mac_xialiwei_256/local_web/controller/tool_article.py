@@ -138,7 +138,7 @@ def get_article_info(short_link):
         title = browser.find_element_by_class_name("title").text
 
         content = browser.find_element_by_class_name("content").text
-
+        content = content.replace('puco','唇泥')
         browser.find_element_by_class_name("author-item").find_element_by_class_name("author-info").click()
         browser.minimize_window()
         time.sleep(3)

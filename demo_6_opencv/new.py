@@ -1,9 +1,11 @@
+#-*-coding: utf-8 -*-
+
 import os
 import time
 import random
 import json
 
-title_text = ['口红💄秋冬分享','口红','氛围感','♥国货好物|口红','唇釉💄试色','火速收藏👍','试色']
+title_text = ['💄口红💄冬季分享','💄口红♥','美妆♥国货','!唇釉💄试色','火速收藏👍']
 content_text = [
                 'YSL_12_Corail&&💄YSL_80_Chili',
                 'Mac_chili💄Mac_Marrakesh&&Mac_Ruby_woo💄Mac_Dubonnet',
@@ -19,7 +21,13 @@ content_text = [
                 '上试色笔记📒',
                 '冬季暖心季',
                 '收集喜欢的口红唇釉制作成手帐,分享给集美们',
-                '朋友涂过都赞不绝口'
+                '朋友涂过都赞不绝口',
+                '九敏这支也太绝了,刚上嘴是慕斯质感用手晕开柔雾哑光质地上嘴显得嘴巴特别饱满黄皮可冲入股不亏',
+                '这种就不会荧光超乖超嫩~说它是初恋色也不为过!!真的就是校园里那种清纯小姐姐的感觉了~质地我也爱抿开雾蒙蒙的 抚平唇纹🐂',
+                '薄涂我觉得在嘴上是有点玫调的!素颜不太适合!!但是厚涂无花果奶茶调就出来!黄皮涂的话一下就好看了!挺日常又百搭的颜色🍓',
+                '半哑光的妆效但是不拔干!微微润的赶脚',
+                '天气冷下来，正是凹造型的好时节~',
+                '用浪漫的方式结束这一年',
                 ]
 system_list = [
     'adb -s 869e65410721 shell input tap 306 411',
@@ -37,6 +45,7 @@ def set_file_time(filename, updatetime, access_time):
 
 id_list = os.listdir(r'D:\github\1\hotpoor_autoclick_xhs\mac_xialiwei_256\local_web\static\files')
 # print(id_list)
+
 num = 1
 one = []
 two = []
@@ -51,6 +60,7 @@ for i in os.listdir(r'D:\github\1\hotpoor_autoclick_xhs\demo_6_opencv\final'):
         two.append(i)
     if '3x3' in i:
         three.append(i)
+
 num = 1
 print(one)
 print(two)
@@ -122,29 +132,16 @@ for a,b,c,d in zip(one,two,three,original_list):
     time.sleep(2)
 
     print('发布\n')
-    os.system("adb -s 869e65410721 shell input tap 784 2097")
-    time.sleep(10)
-    os.system("adb -s 869e65410721 shell input tap 967 2149")
+    time.sleep(15)
+    os.system("adb -s 869e65410721 shell input tap 766 2272")
     time.sleep(2)
-    os.system("adb -s 869e65410721 shell input tap 967 2149")
+    os.system("adb -s 869e65410721 shell input tap 978 2137")
     time.sleep(2)
-    os.system("adb -s 869e65410721 shell input tap 967 2149")
+    os.system("adb -s 869e65410721 shell input tap 978 2137")
     time.sleep(2)
-    os.system("adb -s 869e65410721 shell input tap 967 2149")
+    os.system("adb -s 869e65410721 shell input tap 978 2137")
     time.sleep(2)
     os.system(f"adb -s 869e65410721 shell input swipe 533 271 647 1608 150")
-
-    os.system('adb -s 869e65410721 shell input tap 867 1414')
-    time.sleep(2)
-    os.system('adb -s 869e65410721 shell input tap 922 2126')
-    time.sleep(0.5)
-    # os.system(f'adb -s 869e65410721 shell am broadcast -a ADB_INPUT_TEXT --es msg "[买爆R][买爆R]快团团[自拍R][自拍R][买爆R][买爆R]"')
-    # os.system(f'adb -s 869e65410721 shell am broadcast -a ADB_INPUT_TEXT --es msg "六色无一雷品‼"')
-    # os.system(fr'adb -s 869e65410721 shell am broadcast -a ADB_INPUT_TEXT --es msg "全部自留‼🛰小程序://快团团👍👍"')
-    time.sleep(1)
-    os.system('adb -s 869e65410721 shell input tap 922 2126')
-    os.system('adb -s 869e65410721 shell input tap 975 1942')
-    os.system(f"adb -s 869e65410721 shell input tap 71 120")
 
     time.sleep(60 * 2)
     print('start\n')
@@ -170,5 +167,7 @@ for a,b,c,d in zip(one,two,three,original_list):
     os.system("adb -s 869e65410721 shell input tap 766 2261")
     time.sleep(0.5)
     os.system("adb -s 869e65410721 shell input tap 766 2261")
+    time.sleep(0.5)
     os.system("adb -s 869e65410721 shell input tap 766 2261")
+    time.sleep(0.5)
     os.system("adb -s 869e65410721 shell input tap 766 2261")
