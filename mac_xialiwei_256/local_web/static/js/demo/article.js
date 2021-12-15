@@ -131,6 +131,7 @@
       dom.text("解析中");
       short_link_val = $("input[data-name=short_link]").val();
       short_link = "http://" + short_link_val.split("，")[1].split("http://")[1];
+//      short_link = short_link_val
       return $.ajax({
         url: "/api/tool/article/get_info",
         type: "GET",
