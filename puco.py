@@ -173,3 +173,7 @@ for id in json_files:
         os.remove(js_path)
         print(f"num{num}")
         num+=1
+
+        
+
+#  security find-generic-password -ga "ROUTERNAME" | grep "password:"
