@@ -84,6 +84,8 @@ def get_article_info(short_link):
     image_links = []
     # t = int(round(time.time() * 1000))  # 毫秒级时间戳
     t = browser.current_url.split("/")[5].split("?")[0]
+    print(t)
+    print(t)
     t_is_exists = os.path.exists(os.path.join(os.path.dirname(__file__),'../static/files/%s.%s'%(t,"json")))
 
     if not t_is_exists:
