@@ -32,7 +32,7 @@ from controller import findmaster_fork
 from controller import findmaster_comment
 from controller import findmaster_agora
 from controller import findmaster_stripe
-
+from controller import AddHandler
 from controller import data
 from controller.base import WebRequest
 
@@ -129,6 +129,7 @@ application = tornado.web.Application([
 
     # (r"/(.*)", findmaster.MainHandler),
     (r"/(.*)", findmaster.UriMappingHandler),
+    (r"/api/Terry",AddHandler.AddAPIHandler)
     ],**settings)
 
 if __name__ == "__main__":
