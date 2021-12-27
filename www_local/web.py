@@ -129,7 +129,7 @@ application = tornado.web.Application([
 
     # (r"/(.*)", findmaster.MainHandler),
     (r"/(.*)", findmaster.UriMappingHandler),
-    (r"/api/Terry",AddHandler.AddAPIHandler)
+    (r"/api/Terry",AddHandler.AddAPIHandler),
     ],**settings)
 
 if __name__ == "__main__":

@@ -36,8 +36,6 @@ from nomagic.cache import BIG_CACHE
 from setting import settings
 from setting import conn
 
-# from user_agents import parse as uaparse #早年KJ用来判断设备使用
-
 from .base import WebRequest
 from .base import WebSocket
 import pymail
@@ -45,7 +43,7 @@ import pymail
 from .data import DataWebSocket
 b=0
 class AddAPIHandler(WebRequest):
-    @tornado.gen.coroutine
+    # @tornado.gen.coroutine
     def post(self):
-        self.get_argument()
-        self.write('Terry')
+        nowamagic = self.get_argument('nowamagic')
+        self.write( nowamagic )
