@@ -100,6 +100,7 @@ class UriMappingHandler(WebRequest):
         self.grid_graph = block.get("grid_graph",{})
         self.main_area = block.get("main_area",{})
         self.render("../template/page.html")
+
 class MainHandler(WebRequest):
     @tornado.gen.coroutine
     def get(self, app):
@@ -156,6 +157,7 @@ class LoginHandler(WebRequest):
         self.time_now = int(time.time())
         self._ = self.locale.translate
         self.render("../template/login.html")
+
 class RegisterHandler(WebRequest):
     @tornado.gen.coroutine
     def get(self):
@@ -202,6 +204,7 @@ class RegisterHandler(WebRequest):
         self.grid_graph = block.get("grid_graph",{})
         self.main_area = block.get("main_area",{})
         self.render("../template/page.html")
+
 class MainHomeHandler(WebRequest):
     def get(self):
         self.timer = int(time.time())

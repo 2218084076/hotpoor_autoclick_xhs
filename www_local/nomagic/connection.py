@@ -13,8 +13,7 @@ import json
 import random
 import string
 
-# import __init__ as nomagic
-import nomagic
+import __init__ as nomagic
 
 from setting import conn
 

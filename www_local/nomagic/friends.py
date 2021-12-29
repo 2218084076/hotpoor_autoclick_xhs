@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-# import __init__ as nomagic
-import nomagic
+import __init__ as nomagic
 
 from setting import conn
 import auth

@@ -22,7 +22,7 @@ from tornado.escape import json_encode, json_decode
 
 from setting import settings
 from setting import conn
-
+from controller import test_block
 from controller import auth
 from controller import findmaster
 from controller import findmaster_permission
@@ -129,8 +129,11 @@ application = tornado.web.Application([
 
     # (r"/(.*)", findmaster.MainHandler),
     (r"/(.*)", findmaster.UriMappingHandler),
-    (r"/api/Terry",AddHandler.AddAPIHandler),
-    ],**settings)
+    (r"/api/test/creat",test_block.CreatTestBlockAPIHandler),
+    (r"/api/test/update",test_block.UpdateTestBlockAPIHandler),
+    (r"/api/test/get_test", test_block.GetTestBlockAPIHandler),
+
+],**settings)
 
 if __name__ == "__main__":
     tornado.options.define("port", default=8201, help="Run server on a specific port", type=int)

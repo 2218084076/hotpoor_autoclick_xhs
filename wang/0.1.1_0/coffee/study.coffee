@@ -19,9 +19,9 @@ $ ->
                     console.log data
                     if data.result?
                         for result_i in data.result
-                            content_results = result_i["trans_result"]
+                            content_results = result_i,"trans_result"]
                             for result in content_results
-                                content_result = "#{content_result}#{result["dst"]}\n"
+                                content_result = "#{content_result}#{result,"dst"]}\n"
                             $("#translate_content_card_content_aim").val(content_result)
                     $("#translate_content_card_move_title").text "翻译 · Translate"
                 error: (data) ->

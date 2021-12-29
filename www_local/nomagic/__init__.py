@@ -1,17 +1,15 @@
-# !/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf8 -*-
-import sys
-import os
 
 import uuid
 import json
 
-import hash_ring3
+import hash_ring
 
 from setting import conn
 from setting import ring
 
-_RING = hash_ring3.HashRing(range(len(ring)))
+_RING = hash_ring.HashRing(range(len(ring)))
 
 
 def _pack(data): return json.dumps(data, ensure_ascii=False)
