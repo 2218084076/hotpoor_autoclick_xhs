@@ -127,8 +127,8 @@ application = tornado.web.Application([
     (r"/api/reset_password",auth.ResetPasswordAPIHandler),
     (r"/api/get_login",auth.GetLoginAPIHandler),
 
-    # (r"/(.*)", findmaster.MainHandler),
-    (r"/(.*)", findmaster.UriMappingHandler),
+    (r"/(.*)", findmaster.MainHandler),
+    # (r"/(.*)", findmaster.UriMappingHandler),
     (r"/api/test/creat",test_block.CreatTestBlockAPIHandler),
     (r"/api/test/update",test_block.UpdateTestBlockAPIHandler),
     (r"/api/test/get_test", test_block.GetTestBlockAPIHandler),

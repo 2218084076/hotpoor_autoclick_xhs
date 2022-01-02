@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到聊天室</title>
+</head>
+<body style="background-color: rgb(212, 231, 222);" background="/static/b.jpg">
+        <p style="right: 0pt;font: outline;">欢迎！<font style="color:rgb(247, 3, 3)">{
+   {id}}</font></p>
+        <a href="/login" style="right:100%"><font style="color:darkred">切换账号</font></a>
+        <center>
+            <div>
+                <h1>{
+   {session }}的聊天室</h1>
+            <div>
+                {%for room in rooms%}
+                    <a href="/home/?n={
+   {room}}&u={
+   {session}}">聊天室-{
+   {room}}</a> <br>
+                {%end%}
+            </div>
+                <br>
+                <a href="/create/?u={
+   {id}}"><font style="color:rgb(16, 18, 145)">创建新的聊天室</font></button>
+                    <br><br>
+                <a href='/basic/?u={
+   {id}}'><font style="color:rgb(16, 18, 145)">点击刷新</font></a>
+            </div>
+        </center>
+
+</body>
+</html>

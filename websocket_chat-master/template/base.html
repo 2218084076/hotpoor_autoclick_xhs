@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Websocket聊天室</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+</head>
+
+<body>
+<header class="navbar navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav">
+                {% if user %}
+                <li><a href="javascript:void(0)">当前登陆用户：</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                    <img class="mini" src="/static/images/{{ user['imageid'] }}.jpg">{{user["name"] }}<b
+                        class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/signout">退出登陆</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="javascript:void(0)">当前没有用户登陆</a></li>
+                {% end %}
+
+            </ul>
+        </div>
+        <nav class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="nav navbar-nav  navbar-right">
+                <li><a target="_blank" href="https://datastructure.xiaoxiaoming.xyz/">数据结构</a></li>
+                <li><a target="_blank" href="https://linuxstudy.xiaoxiaoming.xyz/">Linux</a></li>
+                <li><a target="_blank" href="https://www.bootcss.com/">Bootstrap中文网</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div id="important" style="color:#cdbfe3; background-color:#6f5499; padding:5px; margin:-20px 0 20px 0;">
+    <div class="container">
+        <h1 style="color:#fff; font-size:30px">Websocket聊天室</h1>
+        <p style="line-height:12px">一个基于python Tornado开发的WebSocket聊天室，前端采用Vue和bootstrap实现！</p>
+    </div>
+</div>
+{% block main %} {% end %}
+<footer style="background-color:#ddd; padding: 20px 0;">
+    <div class="container">
+    </div>
+</footer>
+</body>
+</html>
+

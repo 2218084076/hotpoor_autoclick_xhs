@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="background-color: rgb(212, 231, 222)" background="/static/bg4.jpg">
+<div>
+    <p style="right: 0pt;font: outline;"><font style="color:rgb(75, 8, 102)">{
+   {id}}</font>已登录</p>
+    <a href="/basic/?u={
+   {id}}"><font style="color:rgb(5, 121, 101)">我的主页面</font></a>
+    <center>
+    <div style="width: 70%">
+        <h1><font style="color:rgb(250, 249, 249)">聊天室-{
+   { n }}!</font></h1>
+        <input type="hidden" value="{
+   { n }}" id="n">
+        <input type="hidden" value="{
+   { u }}" id="u">
+
+        <div id="chatinfo" style="background-color: lightyellow;opacity: 0.8;width:600px;height:350px;overflow:auto;padding: 10px;border: 1px solid #888">
+            <!-- 聊天内容 -->
+        </div>
+
+        <div style="clear: both; margin-top: 20px">
+            <input type="text" id="message">
+            <button onclick="sendMessage" id="btn">发送</button><br>
+            <button onclick="returnback" id="retn">返回</button>
+
+        </div>
+    </div>
+</center>
+</div>
+<script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
+<script>
+    n = $("#n").val()
+    u = $("#u").val()
+    var ws=new WebSocket("ws://127.0.0.1:8000/newChatStatus/?n=" + n + "&u=" +u)
+    $('#btn').click(sendMessage)
+
+    function sendMessage(){
+        var message=$('#message').val()
+        ws.send(message)
+        $('#message').val("")
+    }
+
+    $('#retn').click(returnback)
+    function returnback(){
+        window.location.href="/basic/?u={
+   {id}}";
+    }
+
+    ws.onmessage=function(evt){
+
+        var data = JSON.parse(evt.data)
+        if(data['from']=='sys'){
+
+            $('#chatinfo').append("<p style='width: 100%; text-align:center; font-size: 16px; color: green'>" + data['message'] + "</p>");
+        }
+        else if(data['from']==u)
+        {
+
+            $('#chatinfo').append("<p style='width: 100%; text-align:right; font-size:15px'>" + u + ": <br>" +"<span style='color: blue'>" + data['message'] + "</span>" + "</p>");
+        }
+        else{
+            $('#chatinfo').append("<p style='width: 100%; text-align:left; font-size:15px'>" + data['from'] + ": <br>" +"<span style='color: red'>" + data['message'] + "</span>" + "</p>");
+        }
+    }
+    ws.onerror=function(){
+
+    }
+
+</script>
+</body>
+</html>

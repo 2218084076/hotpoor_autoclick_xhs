@@ -22,9 +22,7 @@ import tornado.websocket
 import tornado.httpclient
 import tornado.gen
 from tornado.escape import json_encode, json_decode
-
 # from user_agents import parse as uaparse #早年KJ用来判断设备使用
-
 # import nomagic
 # from nomagic.cache import get_user, get_users, update_user, get_doc, get_docs, update_doc, get_aim, get_aims, update_aim, get_entity, get_entities, update_entity
 # from nomagic.cache import BIG_CACHE

@@ -104,9 +104,9 @@ class UriMappingHandler(WebRequest):
 class MainHandler(WebRequest):
     @tornado.gen.coroutine
     def get(self, app):
-        # self.time_now = int(time.time())
-        # self._ = self.locale.translate
-        # self.render("../template/index.html")
+        self.time_now = int(time.time())
+        self._ = self.locale.translate
+        self.render("../template/index.html")
         block_id = "0b5ee08ed0ed498593306193601680e7"
         if not self.current_user:
             self.user_id = "no_login:%s"%str(time.time())

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .linear{
+            width:100%;
+            FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=##15A216,endColorStr=#fafafa); /*IE*/
+            background:-moz-linear-gradient(top,#15A216,#fafafa);/*火狐*/
+            background:-webkit-gradient(linear,0% 0%, 0% 100%,from(#e8b7db), to(#f4e0d4));/*谷歌*/
+            background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #15A216),color-stop(1, #fafafa));/* Safari & Chrome*/
+            filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#15A216', endColorstr='#fafafa'); /*IE6 & IE7*/
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#15A216', endColorstr='#fafafa')"; /* IE8 */
+        }
+    </style>
+    <style>
+        .xialiwei_20211229_fbm,.xialiwei_20211229_fbm_more{
+            margin:10px;
+            border-radius:auto;
+            vertical-align: middle;
+
+        }
+        .xialiwei_20211229_fbm_more_submit{
+            margin-top:20px;
+            width:200px;
+            height:40px;
+            border-radius:10px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.10), 0 17px 50px 0 rgba(0,0,0,0.10);
+            opacity: 0.8;
+            margin: auto;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            border: 1px solid black;
+        }
+        .input{
+            border:1px solid black;
+            margin-top:20px;
+            width:200px;
+            height:40px;
+            border-radius:10px;
+            opacity: 0.8;
+            margin: auto;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            border: 1px solid black;
+            box-shadow: 0 5px 3px 0 rgba(0,0,0,0.10), 0 17px 50px 0 rgba(0,0,0,0.10);
+        }
+
+        .box{
+            border-radius:5px;
+            box-shadow: 0 5px 3px 0 rgba(0,0,0,0.10), 0 17px 50px 0 rgba(0,0,0,0.10);
+            opacity: 0.8;
+            margin: auto;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+
+        }
+
+         .button1 {
+             -webkit-transition-duration: 0.4s;
+             transition-duration: 0.4s;
+             margin-top:20px;
+             width:200px;
+             height:40px;
+             border-radius:10px;
+             text-align: center;
+             background-color: white;
+             color: black;
+             border: 2px solid #4CAF50;
+             border-radius:5px;
+             box-shadow: 0 5px 3px 0 rgba(0,0,0,0.10), 0 17px 50px 0 rgba(0,0,0,0.10);
+             opacity: 0.8;
+             margin: auto;
+             vertical-align: middle;
+         }
+         .button1:hover {
+             background-color: #4CAF50;
+             color: white;
+             margin: auto;
+         }
+    </style>
+</head>
+<body>
+    <div class="xialiwei_20211229_fbm">
+        <div>姓名</div>
+        <div><textarea class="input"></textarea></div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm">
+        <div>年龄</div>
+        <div><textarea class="input"></textarea></div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm">
+        <div>申请色号</div>
+        <div><textarea class="input"></textarea></div>
+        <div>
+            <button class="box">色号1</button>
+            <button class="box">色号2</button>
+            <button class="box">色号3</button>
+        </div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm">
+        <div>内容作业形式</div>
+        <div><textarea class="input"></textarea></div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm">
+        <div>学校</div>
+        <div><textarea class="input"></textarea></div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm">
+        <div>推荐人</div>
+        <div><textarea class="input"></textarea></div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm">
+        <div>寄送地址</div>
+        <div><textarea class="input"></textarea></div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm">
+        <div>联系方式</div>
+        <div><textarea class="input"></textarea></div>
+    </div>
+
+    <div class="xialiwei_20211229_fbm_more">
+        <button class="button1">提交</button>
+    </div>
+
+    <script>
+    $("body").on("click",".xialiwei_20211229_fbm_more_submit",function(e){
+    doms_fbm = $(".xialiwei_20211229_fbm")
+    doms_fbm_content_json={}
+    doms_fbm_content = $(".comments_area[data-block=9a70d9aa5d1d4354b29cf0ebffb9cd66]>div>textarea")
+    doms_fbm_content
+    for(i=0;i<doms_fbm.length;i++){
+    doms_fbm_content_json[$(doms_fbm[i]).find("div")[0].innerText]=$(doms_fbm[i]).find("div>textarea").val()
+    }
+    doms_fbm_content.val(JSON.stringify(doms_fbm_content_json))
+    $(".comments_area[data-block=9a70d9aa5d1d4354b29cf0ebffb9cd66]>div>.comment_submit").click()
+    alert("提交成功")
+    })
+    $("body").on("click",".xialiwei_20211229_fbm>div>button",function(e){
+    var dom = $(this)
+    dom.parents(".xialiwei_20211229_fbm").find("div>textarea").val(dom.parents(".xialiwei_20211229_fbm").find("div>textarea").val()+"\n"+dom.text())
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+</head>
+<body style="background-color: rgb(212, 231, 222);" background="/static/bg3.jpg">
+        <center>
+        <h1><font style="color:rgb(0, 0, 0)">登录聊天界面</font></h1>
+        <br>
+        <form  method="POST" action="/login" id="login" style="color: rgb(255, 255, 255)">
+            <div>
+        <font style="color:rgb(255, 255, 255)">账户：</font><input type="text" name="id"><br><br>
+        </div>
+        <div>
+            <font style="color:rgb(252, 252, 252)">密码：<input type="password" name="passwd"><br>
+        </div>
+        <br>
+        <br>
+        <div>
+            <input type="submit" value="登录">
+            <input type="reset" value="重置">
+        </div>
+        <div>
+            <br>
+            <a href="/register/?new">新用户请先注册</a>
+        </div>
+    </form>
+    </center>
+<marquee direction='left'>欢迎来到聊天界面！</marquee>
+
+<script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
+<script>
+        function register(){
+            location = "http://127.0.0.1:8000/register";
+        }
+
+</script>
+</body>
+</html>
