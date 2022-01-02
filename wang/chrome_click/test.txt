@@ -1,0 +1,6 @@
+//a=[];console.log(users.length)
+//for (i = 0; i<users.length; i++) {
+////   console.log(users[i].getAttribute('data-item-uid'));
+//a.push(users[i].getAttribute('data-item-uid'))
+//}
+//console.log(JSON.stringify(a))

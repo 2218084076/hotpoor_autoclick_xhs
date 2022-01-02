@@ -1,15 +1,42 @@
 {
-  "name": "Terry作品-抖音评论区点赞",
+  "name": "Terry作品-抖音达人邀脚本",
   "manifest_version": 2,
   "version": "1.0",
-  "description": "实现抖音评论区点赞",
+  "description": "抖音达人邀脚本",
   "browser_action": {
-    "default_icon": "images/icon128.png"
+    "default_icon": "images/iconterry.png"
   },
   "content_scripts": [
     {
-      "matches": ["https://www.douyin.com/video/*"],
+      "matches": ["https://buyin.jinritemai.com/dashboard/servicehall/*"],
       "js": ["script.js"]
     }
   ]
 }
+
+//{
+//  // 扩展名称
+//  "name": "My Extension",
+//  // manifest 版本，只能为 2，int 类型
+//  "manifest_version": 2,
+//  // 扩展 版本
+//  "version": "1.0",
+//  // 扩展描述
+//  "description": "A Simple Browser Extension",
+//  // 控制提示文字、图标标记、弹出窗口等
+//  "browser_action": {
+//    // 设置地址栏右侧的扩展图标
+//    "default_icon": "cat.png",
+//    // 鼠标移到扩展图标上显示的文字，可选
+//    "default_title": "I am a Cat",
+//  },
+//  // 内容脚本，在页面带入完成后调用，在脚本中可以获取页面的 DOM 元素
+//  "content_scripts": [
+//    {
+//      // 扩展脚本生效的页面地址（*如果是本地测试的页面，则需要填写的是浏览器中url的地址，而不是本地的文件地址）
+//      "matches": ["file:///Users/wangxi/Desktop/extensionDemo/index.html/*"],
+//      // 指定扩展脚本文件
+//      "js": ["script.js"]
+//    }
+//  ]
+//}

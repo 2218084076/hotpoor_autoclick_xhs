@@ -1,21 +1,24 @@
-// alert("");
-  // 评论区博主名字
 
+
+var sleep = function(time) {
+    var startTime = new Date().getTime() + parseInt(time, 10);
+    while(new Date().getTime() < startTime) {}
+};
 
 function doit(){
-	setTimeout(function(){
-		a = document.getElementsByClassName('daren-card')
-		for(var i=0;i<list_now.length;i++){
-			console.log(a[i].getAttribute('data-item-uid'));
-		}
-	},5000)
+document.getElementsByClassName("contact-btn")[0].click();
+sleep(1000);
+document.getElementsByClassName("add-product-operate")[0].getElementsByTagName("button")[0].click();
+sleep(1000);
+document.getElementsByClassName("ant-checkbox")[0].getElementsByTagName("input")[0].click();
+sleep(1000);
+document.getElementsByClassName("add-product__footer-wrapper")[0].getElementsByTagName("button")[0].click();
+sleep(1000);
+document.getElementsByClassName("drawer-footer-default")[0].getElementsByTagName("button")[0].click();
+sleep(1000)
 }
 doit()
 
 
-//a=[];console.log(users.length)
-//for (i = 0; i<users.length; i++) {
-////   console.log(users[i].getAttribute('data-item-uid'));
-//a.push(users[i].getAttribute('data-item-uid'))
-//}
-//console.log(JSON.stringify(a))
+
+
