@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>费用报销明细表</title>
+    <script src="jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<table id="excel" border="1" bordercolor="black" cellpadding="10" cellspacing="0">
+</table>
+<script>
+b=[['费用报销明细表', '', '', '', '', '', '', ''], ['公司名称：', '', '上海阡上花信息科技有限公司', '', '', '', '', '单位：元'], ['序号', '日期', '报销类型', '款项用途', '报销金额', '是否有发票', '报销人', '备注'], [1.0, '2021.12.7', '附件', '充电器 12v 1.5a \n台达 * 12', 161.0, '无', '费振中', '14个winPad\n需要充电设备'], [2.0, '2021.12.7', '网络', '公司用翻墙VPN 3个月', 54.0, '无', '费振中', '信息部网络翻墙\n（一季度）'], [3.0, '2021.12.9', '附件', '公牛魔方排插组合', 191.0, '有', '费振中', '14个winPad充电附件'], [4.0, '2021.12.9', '杂项', '得力名片夹，推夹器', 50.2, '有', '费振中', '商务名片收集'], [5.0, '2021.12.14', '附件', 'USB3.1 Type-C\n公对母转接头 * 4', 30.82, '无', '费振中', ''], [6.0, '2021.12.25', '附件', 'USB无线网卡 * 2', 113.3, '有', '费振中', '台式机无线网卡'], [7.0, '2021.12.24', '网络', 'TP-LINK \nAX5400路由器', 378.98, '有', '费振中', ''], [8.0, '', '', '', '', '', '', ''], [9.0, '', '', '', '', '', '', ''], [10.0, '', '', '', '', '', '', ''], [11.0, '', '', '', '', '', '', ''], [12.0, '', '', '', '', '', '', ''], [13.0, '', '', '', '', '', '', ''], [14.0, '', '', '', '', '', '', ''], [15.0, '', '', '', '', '', '', ''], [16.0, '', '', '', '', '', '', ''], [17.0, '', '', '', '', '', '', ''], [18.0, '', '', '', '', '', '', ''], [19.0, '', '', '', '', '', '', ''], [20.0, '', '', '', '', '', '', ''], ['费用合计', '', 979.3, '', '大写', 979.3, '', ''], ['财务审批：', '', '', '', '总经理审批：', '', '', '']]
+c=[[0, 1, 0, 8], [1, 2, 0, 2], [23, 24, 0, 2], [23, 24, 2, 4], [23, 24, 5, 8], [24, 25, 0, 4], [24, 25, 4, 8]]
+background=[{'row': 2, 'col': 0, 'rgb': [192, 192, 192]}, {'row': 2, 'col': 1, 'rgb': [192, 192, 192]}, {'row': 2, 'col': 2, 'rgb': [192, 192, 192]}, {'row': 2, 'col': 3, 'rgb': [192, 192, 192]}, {'row': 2, 'col': 4, 'rgb': [192, 192, 192]}, {'row': 2, 'col': 5, 'rgb': [192, 192, 192]}, {'row': 2, 'col': 6, 'rgb': [192, 192, 192]}, {'row': 2, 'col': 7, 'rgb': [192, 192, 192]}]
+for(var i=0 ; i<b.length;i++){
+    tr=document.createElement("tr")
+    for (var j=0 ; j<b[i].length;j++){
+        td=document.createElement("td")
+        td.innerText = b[i][j]
+        td.setAttribute("data-row",i+1)
+        td.setAttribute("data-col",j+1)
+        td.setAttribute("contenteditable","true")
+        tr.append(td)
+    }
+    document.getElementById("excel").append(tr)
+
+}
+
+for (var x=0;x<c.length;x++){
+   console.log(11111)
+    x1=c[x][0]
+    x2=c[x][1]
+    y1=c[x][2]
+    y2=c[x][3]
+    first=null
+    for(var i=x1+1;i<x2+1;i++){
+        console.log(i)
+        for(var j=y1+1;j<y2+1;j++){
+                console.log(first)
+
+            if (first == null){
+                first = $('td[data-row='+i+'][data-col='+j+']')
+                console.log(first)
+                first.attr("rowspan",x2-x1)
+                first.attr("colspan",y2-y1)
+            }
+            else{
+                $('td[data-row='+i+'][data-col='+j+']').remove()
+
+            }
+        }
+    }
+  }
+
+  for(var i=0;i<background.length;i++){
+    h=background[i]["row"]+1
+    l=background[i]["col"]+1
+    background_color=background[i]["rgb"]
+
+    f=$('td[data-row='+h+'][data-col='+l+']')
+    console.log(f.text())
+    f.css("backgroundColor","rgb("+background_color[0]+","+background_color[1]+","+background_color[2]+")")
+
+
+  }
+</script>
+</body>
+</html>
