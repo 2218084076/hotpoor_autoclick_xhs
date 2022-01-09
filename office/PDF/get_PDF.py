@@ -7,7 +7,7 @@ from pdfminer.pdfinterp import PDFTextExtractionNotAllowed
 pdf_path = 'test2.pdf'
 result_list = []
 
-def parse():
+def parse_pdf():
     fp = open(pdf_path, 'rb')
     # 用文件对象创建一个PDF文档分析器
     parser = PDFParser(fp)
@@ -31,6 +31,7 @@ def parse():
         interpreter = PDFPageInterpreter(rsrcmgr, device)
         # 循环遍历列表，每次处理一个page内容
         doc.get_pages() #获取page列表
+        first_page = 1
         for page in doc.get_pages():
             interpreter.process_page(page)
             # 接受该页面的LTPage对象
@@ -39,25 +40,26 @@ def parse():
             # 一般包括LTTextBox, LTFigure, LTImage, LTTextBoxHorizontal 等等
             # 想要获取文本就获得对象的text属性，
             print(page.mediabox)
+
             for x in layout:
-                print(x)
-                if isinstance(x, LTTextBox):
+                # print(x)
+                if isinstance(x, LTTextBoxHorizontal):
                     # print(x.x0,x.x1,x.y0,x.y1)
                     result = x.get_text()
+                    # print(result)
                     result_json ={
                         "x0":x.x0,
                         "x1": x.x1,
                         "y0": x.y0,
                         "y1": x.y1,
+                        "page":first_page,
                         "text":result
                     }
                     result_list.append(result_json)
-                break
 
-
-
+            first_page += 1
 
 if __name__ == '__main__':
-    parse()
+    parse_pdf()
 
-print('a=',result_list)
+# print('a=',result_list)
