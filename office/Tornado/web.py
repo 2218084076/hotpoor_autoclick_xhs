@@ -16,8 +16,13 @@ class ExcelDisplayHandler(tornado.web.RequestHandler):
         def get(self):
                 self.render("../excel.html")
 
+class DocxDisplayHandler(tornado.web.RequestHandler):
+        def get(self):
+                self.render("../python-docx读取doc.html")
+
 def make_app():
         return tornado.web.Application([
+        (r"/docx",DocxDisplayHandler),
         (r"/demo",ReadDemoHandler),
         (r"/excel",ExcelDisplayHandler),
         (r"/",MainHandler)

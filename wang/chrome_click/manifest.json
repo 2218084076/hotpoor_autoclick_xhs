@@ -8,7 +8,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://buyin.jinritemai.com/dashboard/servicehall/*"],
+      "matches": ["https://buyin.jinritemai.com/*"],
       "js": ["script.js"]
     }
   ]
