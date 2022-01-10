@@ -1,7 +1,7 @@
 import pyautogui
 from time import sleep
 import pyperclip
-
+import os
 while True:
     for n in range(0,20):
         pyautogui.moveTo(x=1173, y=348, duration=0.3)
