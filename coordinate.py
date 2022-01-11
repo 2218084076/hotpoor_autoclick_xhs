@@ -3,4 +3,4 @@ import time
 while True:
     time.sleep(1)
     x,y = pyautogui.position()
-    print(x,y)
+    print('x=%s,y=%s'%(x,y))
