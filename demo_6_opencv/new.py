@@ -5,33 +5,33 @@ import time
 import random
 import json
 
-title_text = ['💄口红💄冬季分享','💄口红♥','美妆♥国货','!唇釉💄试色','火速收藏👍','唇釉!纯纯の白茶玫瑰色','绝绝子的!口红💄']
+title_text = [
+    '💄口红💄冬季分享',
+    '💄口红♥',
+    '美妆♥国货',
+    '!唇釉💄试色',
+    '火速收藏👍',
+    '新年红包准备中...',
+    '绝绝子的!口红💄',
+    '虎年限定新品!感觉是吃席讨红包色!',
+    ''
+]
 content_text = [
-                'YSL_12_Corail&&💄YSL_80_Chili',
-                'Mac_chili💄Mac_Marrakesh&&Mac_Ruby_woo💄Mac_Dubonnet',
-                '优秀国货_美妆新试色',
-                '一支带有细闪,有一点点颗粒感很滋润的茶棕色,偏暖的颜色~比较气质低调优雅',
-                '‼百里挑一的绝美色号',
-                '私藏的绝美色号',
-                '无可挑剔的口红单品',
-                '又是一个氛围感爆炸的',
-                '达人推荐',
-                '很显气质的一只',
-                '放大优点妆🍓',
-                '上试色笔记📒',
-                '冬季暖心季',
-                '收集喜欢的口红唇釉制作成手帐,分享给集美们',
-                '朋友涂过都赞不绝口',
-                '九敏这支也太绝了,刚上嘴是慕斯质感用手晕开柔雾哑光质地上嘴显得嘴巴特别饱满黄皮可冲入股不亏',
-                '这种就不会荧光超乖超嫩~说它是初恋色也不为过!!真的就是校园里那种清纯小姐姐的感觉了~质地我也爱抿开雾蒙蒙的 抚平唇纹🐂',
-                '薄涂我觉得在嘴上是有点玫调的!素颜不太适合!!但是厚涂无花果奶茶调就出来!黄皮涂的话一下就好看了!挺日常又百搭的颜色🍓',
-                '半哑光的妆效但是不拔干!微微润的赶脚',
-                '天气冷下来，正是凹造型的好时节~',
-                '用浪漫的方式结束这一年',
-                '颜色比较饱和的橘棕调!很秋冬!很美丽!如果你是黄皮平时就适合橘调的,那这支可以闭眼入~',
-                '黄皮深唇来试最近很火!终于找到了深唇也可涂的秋冬必备柿子红茶色😭',
-                '今日份上嘴试色两支超好看的颜色~',
-                '柔雾哑光质感,持久显色,上嘴显白程度真的绝绝子!'
+    'YSL_12_Corail&&💄YSL_80_Chili',
+    'Mac_chili💄Mac_Marrakesh&&Mac_Ruby_woo💄Mac_Dubonnet',
+    '优秀国货_美妆新试色',
+    '假期每每必备,幸福加倍',
+    '2022所有辛苦都有收获',
+    '幸运物是一定不能少哒(阳光下好好看)希望一年里的所有辛苦都有收获.',
+    '这次的新年唇釉是虎年限定~'
+    '上嘴的色号是MM01&MM02&MM03&MM04...',
+    '有活力又乖巧,还不媚俗嘻嘻!!',
+    '一定能讨到更大的红包🧧',
+    '粉雾唇釉的质地我都忘记夸过多少回了~又哑又遮唇纹👍',
+    '沿途的风景也很美,不要让生活的繁重牵绊住欣赏美的心情',
+    '化妆都比平时状态好',
+    '巨显白',
+    '冬季新年色号给你们安排啦'
                 ]
 system_list = [
     'adb -s 869e65410721 shell input tap 306 411',
@@ -80,7 +80,7 @@ for a,b,c,d in zip(one,two,three,original_list):
     os.system(f'adb -s 869e65410721 push D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{a} /sdcard/DCIM/Camera')
     os.system(f'adb -s 869e65410721 push D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{b} /sdcard/DCIM/Camera')
     os.system(f'adb -s 869e65410721 push D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{c} /sdcard/DCIM/Camera')
-    os.system(f'adb -s 869e65410721 push D:\github/1/hotpoor_autoclick_xhs/demo_6_opencv/afterWork/original/{d} /sdcard/DCIM/Camera')
+    os.system(f'adb -s 869e65410721 push D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/afterWork/original/{d} /sdcard/DCIM/Camera')
     print(a,b,c,d)
     time.sleep(5)
     os.system('adb -s 869e65410721 shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Camera/')
