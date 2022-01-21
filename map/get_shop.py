@@ -115,6 +115,17 @@ for u in urls:
             "content":
                 '''
 result=[]
+function Convert_GCJ02_To_BD09($lat,$lng){
+    $x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    $x = $lng;
+    $y = $lat;
+    $z =Math.sqrt($x * $x + $y * $y) + 0.00002 * Math.sin($y * $x_pi);
+    $theta = Math.atan2($y, $x) + 0.000003 * Math.cos($x * $x_pi);
+    $lng = $z * Math.cos($theta) + 0.0065;
+    $lat = $z * Math.sin($theta) + 0.006;
+    return [$lng,$lat];
+}
+
 result.push(document.getElementsByClassName("shop-name")[0].innerText)
 result.push(document.getElementsByClassName("brief-info")[0].getElementsByTagName("span")[0].getAttribute("class").split("mid-str")[1])
 result.push(document.getElementsByClassName("brief-info")[0].getElementsByTagName("span")[1].innerText)
@@ -130,7 +141,7 @@ document.getElementsByClassName("phone")[0].getElementsByTagName("a")[0].click()
 result.push(document.getElementsByClassName("phone")[0].innerText)
 }
 result.push(document.getElementsByClassName("address")[0].innerText)
-result.push(document.getElementById("map").getElementsByTagName("img")[0].src.split(".png|")[1])
+result.push(Convert_GCJ02_To_BD09(document.getElementById("map").getElementsByTagName("img")[0].src.split(".png|")[1]))
 result_info = {
 "shop-name":result[0],
 "star":result[1]*0.1,
