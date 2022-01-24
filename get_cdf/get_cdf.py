@@ -9,12 +9,12 @@ import pyperclip
 # 滚动屏幕至全部右下角
 page_num = 0
 page_num_end = 3
-
-page_with_items = [20,20]
+# SK-II 从第二页开始
+page_with_items = [20,20,1]
 action_list = [
     {
-        "x":118,
-        "y":15,
+        "x":127,
+        "y":17,
         "sleep":1,
         "name":"move_to_click",
         "content":"",
@@ -73,8 +73,8 @@ def pyautogui_action(action):
 
 for page in page_with_items:
     action_page_change = {
-        "x":118,
-        "y":15,
+        "x":127,
+        "y":17,
         "sleep":1,
         "name":"move_to_click",
         "content":"",
@@ -85,57 +85,57 @@ for page in page_with_items:
     for item in range(0,page):
         action_item_click_list = [
             {
-                "x":974,
-                "y":81,
-                "sleep":1,
+                "x":1377,
+                "y":147,
+                "sleep":0.5,
                 "name":"move_to_click",
                 "content":"",
                 "action_name":"切换console",
             },
             {
-                "x":850,
-                "y":109,
-                "sleep":1,
+                "x":1204,
+                "y":172,
+                "sleep":0.5,
                 "name":"move_to_click",
                 "content":"",
                 "action_name":"清空信息console",
             },
             {
-                "x":1116,
-                "y":741,
-                "sleep":5,
+                "x":1282,
+                "y":995,
+                "sleep":0.5,
                 "name":"select_all_and_copy_and_paste",
                 "content":"document.getElementsByClassName(\"product-item-default\")[%s].children[1].click()"%(item),
                 "action_name":"切换产品",
             },
             {
-                "x":361,
-                "y":17,
-                "sleep":5,
+                "x":453,
+                "y":16,
+                "sleep":1,
                 "name":"open_console",
                 "content":"",
                 "action_name":"打开控制台",
             },
             {
-                "x":974,
-                "y":81,
-                "sleep":5,
+                "x":1377,
+                "y":147,
+                "sleep":0.5,
                 "name":"select_all_and_copy_and_paste",
                 "content":"",
                 "action_name":"选择console",
             },
             {
-                "x":850,
-                "y":109,
-                "sleep": 1,
+                "x":1204,
+                "y":172,
+                "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
                 "action_name": "清空信息console",
             },
             {
-                "x":1116,
-                "y":741,
-                "sleep":5,
+                "x":1282,
+                "y":995,
+                "sleep":0.5,
                 "name":"select_all_and_copy_and_paste",
                 "content":"""
 result=[]
@@ -173,9 +173,9 @@ console.log(result_info)
             # document.getElementsByClassName("product-code-value")[0].innerText
             # document.getElementsByClassName("price-now")[0].innerText
             {
-                "x":1116,
-                "y":741,
-                "sleep": 5,
+                "x":1282,
+                "y":995,
+                "sleep": 0.5,
                 "name": "select_all_and_copy_and_paste",
                 "content":"""
 dom=document.createElement("div")
@@ -184,70 +184,78 @@ dom.style.position="fixed"
 dom.style.top="0px"
 dom.style.right="0px"
 dom.style.zIndex=9999999999999999999
-dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"
                 """,
                 "action_name":"获取商品信息"
             },
             {
-                "x":1116,
-                "y":741,
-                "sleep": 5,
+                "x": 1282,
+                "y": 995,
+                "sleep": 0.5,
+                "name": "select_all_and_copy_and_paste",
+                "content": r'dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"',
+                "action_name": "获取商品信息"
+            },
+            {
+                "x":1282,
+                "y":995,
+                "sleep": 0.5,
                 "name": "select_all_and_copy_and_paste",
                 "content":'document.body.append(dom)',
                 "action_name":"获取商品信息"
             },
             {
-                "x":718,
-                "y":85,
-                "sleep":5,
+                "x":1023,
+                "y":152,
+                "sleep":0.5,
                 "name":"select_all_and_copy",
                 "content":"",
                 "action_name":"copy"
             },
             {
-                "x": 571,
-                 "y": 14,
-                 "sleep": 1,
+                "x": 443,
+                "y": 11,
+                "sleep": 0.5,
+                "name": "select_item_and_close_tab",
+                "content": "",
+                "action_name": "关闭选项卡",
+            },
+            {
+                "x": 443,
+                "y": 11,
+                 "sleep": 0.5,
                  "name": "move_to_click",
                  "content": "",
                  "action_name": "点击选项卡",
             },
             {
-                "x": 275,
-                "y": 207,
-                "sleep": 1,
+                "x": 445,
+                "y": 232,
+                "sleep": 0.5,
                 "name": "select_all_and_paste",
                 "content": "",
                 "action_name": "提交",
             },
             {
-                "x": 216,
-                "y": 258,
-                "sleep": 1,
+                "x": 586,
+                "y": 244,
+                "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
                 "action_name": "submit",
             },
             {
-                "x": 357,
-                "y": 16,
-                "sleep": 1,
+                "x": 127,
+                "y": 17,
+                "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
                 "action_name": "点击选项卡",
             },
+
             {
-                "x": 357,
-                "y": 16,
-                "sleep":2,
-                "name":"select_item_and_close_tab",
-                "content":"",
-                "action_name":"关闭选项卡",
-            },
-            {
-                "x":118,
-                "y":15,
-                "sleep": 1,
+                "x": 127,
+                "y": 17,
+                "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
                 "action_name": "切换pgy页面",
@@ -257,24 +265,24 @@ dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)
             pyautogui_action(action_item_click)
     action_page_change_list = [
             {
-                "x":974,
-                "y":81,
+                "x":1377,
+                "y":147,
                 "sleep":1,
                 "name":"move_to_click",
                 "content":"",
                 "action_name":"切换console",
             },
             {
-                "x":850,
-                "y":109,
+                "x":1204,
+                "y":172,
                 "sleep":1,
                 "name":"move_to_click",
                 "content":"",
                 "action_name":"清空信息console",
             },
             {
-                "x":1116,
-                "y":741,
+                "x":1282,
+                "y":995,
                 "sleep":5,
                 "name":"select_all_and_copy_and_paste",
                 "content":"document.getElementsByClassName(\"cm-pagination-next\")[0].click()",

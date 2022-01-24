@@ -4,8 +4,7 @@ import pyperclip
 
 # 打开审查元素位置 921.6
 # 2022/01/15
-urls=[" C021954","C037328"]
-
+ids=["C053586","C053263","C050137","C048825","C046463","C042321","C035550"]
 def pyautogui_action(action):
     if action["name"] in ["move_to_click"]:
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
@@ -66,7 +65,7 @@ def pyautogui_action(action):
     action_sleep = action.get("sleep",0)
     time.sleep(action_sleep)
 
-for u in urls:
+for u in ids:
     print(u)
     page={
         "x":800,
@@ -204,8 +203,8 @@ dom.style.zIndex=9999999999999999999
             "action_name": "提交",
         },
         {
-            "x": 413,
-            "y": 310,
+            "x": 369,
+            "y": 332,
             "sleep": 1,
             "name": "move_to_click",
             "content": "",
