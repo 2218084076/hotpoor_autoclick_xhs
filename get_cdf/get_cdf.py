@@ -10,7 +10,7 @@ import pyperclip
 page_num = 0
 page_num_end = 3
 # SK-II 从第二页开始
-page_with_items = [20,20,1]
+page_with_items = [20,20,20,19]
 action_list = [
     {
         "x":127,
@@ -21,6 +21,7 @@ action_list = [
         "action_name":"切换pgy页面",
     },
 ]
+
 def pyautogui_action(action):
     if action["name"] in ["move_to_click"]:
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
@@ -103,7 +104,7 @@ for page in page_with_items:
             {
                 "x":1282,
                 "y":995,
-                "sleep":0.5,
+                "sleep":5,
                 "name":"select_all_and_copy_and_paste",
                 "content":"document.getElementsByClassName(\"product-item-default\")[%s].children[1].click()"%(item),
                 "action_name":"切换产品",
@@ -111,10 +112,10 @@ for page in page_with_items:
             {
                 "x":453,
                 "y":16,
-                "sleep":1,
+                "sleep":0.5,
                 "name":"open_console",
                 "content":"",
-                "action_name":"打开控制台",
+                "action_name":"open_console",
             },
             {
                 "x":1377,
