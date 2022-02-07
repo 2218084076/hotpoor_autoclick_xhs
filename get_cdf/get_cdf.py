@@ -3,6 +3,8 @@ import os
 import pyautogui
 import time
 import pyperclip
+# product-item-default
+# document.getElementsByClassName("product-item-default").length    查看页面pages数量
 # Chrome打开浏览器 https://pgy.xiaohongshu.com/solar/advertiser/patterns/kol
 # 选择分类
 # 打开审查元素工具 位置1160px
@@ -10,7 +12,8 @@ import pyperclip
 page_num = 0
 page_num_end = 3
 # SK-II 从第二页开始
-page_with_items = [20,20,20,19]
+page_with_items = [277]
+
 action_list = [
     {
         "x":127,
@@ -68,6 +71,10 @@ def pyautogui_action(action):
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
         pyautogui.hotkey("f12")
+    elif action["name"] in ["esc"]:
+        pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
+        pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
+        pyautogui.hotkey("esc")
     print(action.get("action_name"))
     action_sleep = action.get("sleep",0)
     time.sleep(action_sleep)
@@ -76,14 +83,14 @@ for page in page_with_items:
     action_page_change = {
         "x":127,
         "y":17,
-        "sleep":1,
+        "sleep":0.5,
         "name":"move_to_click",
         "content":"",
         "action_name":"点击选项卡",
     
     }
     pyautogui_action(action_page_change)
-    for item in range(0,page):
+    for item in range(2,page):
         action_item_click_list = [
             {
                 "x":1377,
@@ -104,8 +111,10 @@ for page in page_with_items:
             {
                 "x":1282,
                 "y":995,
-                "sleep":5,
+                "sleep":2,
                 "name":"select_all_and_copy_and_paste",
+                #document.getElementsByClassName("lamer-product-item")[0].getElementsByTagName("a")[0].click()
+                # "content": "document.getElementsByClassName(\"lamer-product-item\")[%s].getElementsByTagName(\"a\")[0].click()" % (item),
                 "content":"document.getElementsByClassName(\"product-item-default\")[%s].children[1].click()"%(item),
                 "action_name":"切换产品",
             },
@@ -138,12 +147,58 @@ for page in page_with_items:
                 "y":995,
                 "sleep":0.5,
                 "name":"select_all_and_copy_and_paste",
-                "content":"""
+                "content":
+#                 '''
+#
+# result=[]
+# result.push("海蓝之谜")
+# result.push(document.getElementsByClassName("product-name")[0].innerText)
+# result.push(document.getElementsByClassName("product-code-value")[0].innerText)
+# result.push(document.getElementsByClassName("price-now")[0].innerText)
+#
+# cxs=document.getElementsByClassName("promotion-item")
+# cxs_info = []
+# for (i=0;i<cxs.length;i++){
+#     cxs_info.push(cxs[i].innerText)
+# }
+# ths=document.getElementsByClassName("property-item-title")
+# tds=document.getElementsByClassName("property-item-value")
+# kv=document.getElementsByClassName("product-properties detail-tab-pro-info")[0].innerText
+# result_info = {
+#     "detail-box-title":result[0],
+#     "product-name":result[1],
+#     "product-code-value":result[2],
+#     "price-now":result[3],
+#     "promotion-item":cxs_info,
+#     "property-item":kv,
+# }
+#
+#                 ''',
+                    """
 result=[]
-result.push(document.getElementsByClassName("detail-box-title")[0].innerText)
-result.push(document.getElementsByClassName("product-name")[0].innerText)
-result.push(document.getElementsByClassName("product-code-value")[0].innerText)
-result.push(document.getElementsByClassName("price-now")[0].innerText)
+try{
+    result.push(document.getElementsByClassName("detail-box-title")[0].innerText)}
+catch{
+    result.push("")
+}
+try{
+    result.push(document.getElementsByClassName("product-name")[0].innerText)
+}
+catch{
+    result.push(document.getElementsByClassName("product-info-title")[0].innerText)
+}
+try{
+    result.push(document.getElementsByClassName("product-code-value")[0].innerText)    
+}
+catch{
+    result.push(document.getElementsByClassName("product-common")[0].innerText)
+}
+try{
+    result.push(document.getElementsByClassName("price-now")[0].innerText)
+}
+catch{
+    result.push(document.getElementsByClassName("product-delivery")[0].innerText)
+}
 
 cxs=document.getElementsByClassName("promotion-item")
 cxs_info = []
@@ -152,11 +207,13 @@ for (i=0;i<cxs.length;i++){
 }
 ths=document.getElementsByClassName("property-item-title")
 tds=document.getElementsByClassName("property-item-value")
-kv={}
-for (i=0;i<ths.length;i++){
+try{
+    kv={}
+    for (i=0;i<ths.length;i++){
     kv[ths[i].innerText]=tds[i].innerText
-}
-
+    }}
+catch{
+    kv=document.getElementsByClassName("product-properties detail-tab-pro-info")[0].innerText}
 result_info = {
     "detail-box-title":result[0],
     "product-name":result[1],
@@ -165,20 +222,6 @@ result_info = {
     "promotion-item":cxs_info,
     "property-item":kv,
 }
-console.log(result_info)
-                """,
-                "action_name":"执行获取内容的JS",
-            },
-            # document.getElementsByClassName("detail-box-title")[0].innerText
-            # document.getElementsByClassName("product-name")[0].innerText
-            # document.getElementsByClassName("product-code-value")[0].innerText
-            # document.getElementsByClassName("price-now")[0].innerText
-            {
-                "x":1282,
-                "y":995,
-                "sleep": 0.5,
-                "name": "select_all_and_copy_and_paste",
-                "content":"""
 dom=document.createElement("div")
 dom.id="wlb_cover"
 dom.style.position="fixed"
@@ -186,8 +229,13 @@ dom.style.top="0px"
 dom.style.right="0px"
 dom.style.zIndex=9999999999999999999
                 """,
-                "action_name":"获取商品信息"
+                "action_name":"执行获取内容的JS",
             },
+            # document.getElementsByClassName("detail-box-title")[0].innerText
+            # document.getElementsByClassName("product-name")[0].innerText
+            # document.getElementsByClassName("product-code-value")[0].innerText
+            # document.getElementsByClassName("price-now")[0].innerText
+            # console.log(result_info)
             {
                 "x": 1282,
                 "y": 995,
@@ -229,6 +277,14 @@ dom.style.zIndex=9999999999999999999
                  "action_name": "点击选项卡",
             },
             {
+                "x": 443,
+                "y": 11,
+                "sleep": 0.5,
+                "name": "esc",
+                "content": "",
+                "action_name": "esc",
+            },
+            {
                 "x": 445,
                 "y": 232,
                 "sleep": 0.5,
@@ -268,7 +324,7 @@ dom.style.zIndex=9999999999999999999
             {
                 "x":1377,
                 "y":147,
-                "sleep":1,
+                "sleep":0.5,
                 "name":"move_to_click",
                 "content":"",
                 "action_name":"切换console",
@@ -276,7 +332,7 @@ dom.style.zIndex=9999999999999999999
             {
                 "x":1204,
                 "y":172,
-                "sleep":1,
+                "sleep":0.5,
                 "name":"move_to_click",
                 "content":"",
                 "action_name":"清空信息console",
@@ -284,11 +340,25 @@ dom.style.zIndex=9999999999999999999
             {
                 "x":1282,
                 "y":995,
-                "sleep":5,
+                "sleep":1,
                 "name":"select_all_and_copy_and_paste",
-                "content":"document.getElementsByClassName(\"cm-pagination-next\")[0].click()",
+                "content":'''
+document.getElementsByClassName("cm-pagination-next")[0].click()
+                ''',
+                # "content":'document.getElementsByClassName("lamer-pagination-next")[0].click()',
                 "action_name":"切换产品页",
-            }
+            },
+            {
+                "x": 1282,
+                "y": 995,
+                "sleep": 0.5,
+                "name": "select_all_and_copy_and_paste",
+                "content": '''
+scrollBy(0,9999)
+                                ''',
+                # "content":'document.getElementsByClassName("lamer-pagination-next")[0].click()',
+                "action_name": "切换产品页",
+            },
     ]
     for action_page_change in action_page_change_list:
         pyautogui_action(action_page_change)

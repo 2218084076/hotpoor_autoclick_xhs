@@ -4,7 +4,10 @@ import pyperclip
 
 # 打开审查元素位置 921.6
 # 2022/01/15
-ids=["C053586","C053263","C050137","C048825","C046463","C042321","C035550"]
+urls = ["tomford-product.html?productId=400463&goodsId=524636&warehouseId=10","tomford-product.html?productId=413813&goodsId=537981&warehouseId=10","tomford-product.html?productId=438131&goodsId=562140&warehouseId=10","tomford-product.html?productId=424801&goodsId=548831&warehouseId=10","tomford-product.html?productId=416242&goodsId=540402&warehouseId=10","tomford-product.html?productId=419681&goodsId=543818&warehouseId=10","tomford-product.html?productId=413809&goodsId=537977&warehouseId=10","tomford-product.html?productId=400469&goodsId=524642&warehouseId=10","tomford-product.html?productId=404550&goodsId=528722&warehouseId=10",
+        "tomford-product.html?productId=426234&goodsId=550259&warehouseId=10","tomford-product.html?productId=425596&goodsId=549626&warehouseId=10","tomford-product.html?productId=413811&goodsId=537979&warehouseId=10","tomford-product.html?productId=414252&goodsId=538420&warehouseId=10","tomford-product.html?productId=414248&goodsId=538416&warehouseId=10","tomford-product.html?productId=412492&goodsId=536660&warehouseId=10","tomford-product.html?productId=407520&goodsId=531688&warehouseId=10","tomford-product.html?productId=400467&goodsId=524640&warehouseId=10","tomford-product.html?productId=407976&goodsId=532144&warehouseId=10",
+        "tomford-product.html?productId=406764&goodsId=530934&warehouseId=10","tomford-product.html?productId=406182&goodsId=530353&warehouseId=10","tomford-product.html?productId=404556&goodsId=528728&warehouseId=10","tomford-product.html?productId=400367&goodsId=524540&warehouseId=10","tomford-product.html?productId=400437&goodsId=524610&warehouseId=10"]
+
 def pyautogui_action(action):
     if action["name"] in ["move_to_click"]:
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
@@ -58,41 +61,26 @@ def pyautogui_action(action):
         pyperclip.copy(write_content)
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
-        pyautogui.hotkey("ctrl", "a")
+        pyautogui.hotkey("ctrl", "l")
         pyautogui.hotkey("ctrl", "v")
         pyautogui.press('enter')
     print(action.get("action_name"))
     action_sleep = action.get("sleep",0)
     time.sleep(action_sleep)
 
-for u in ids:
+for u in urls:
     print(u)
     page={
-        "x":800,
-        "y":237,
-        "sleep":5,
+        "x":608,
+        "y":65,
+        "sleep":3,
         "name":"url_paste",
-        "content":u,
+        "content":"http://www.cdfgsanya.com/%s"%(u),
         "action_name":"访问链接",
     }
     pyautogui_action(page)
     action_item_click_list = [
-        {
-            "x": 198,
-            "y": 951,
-            "sleep": 0.5,
-            "name": "move_to_click",
-            "content": "",
-            "action_name": "点击商品",
-        },
-        {
-            "x": 454,
-            "y": 20,
-            "sleep": 0.5,
-            "name": "open_console",
-            "content": "",
-            "action_name": "打开控制台",
-        },
+
         {
             "x": 1207,
             "y": 176,
@@ -178,34 +166,27 @@ dom.style.zIndex=9999999999999999999
             "content": "",
             "action_name": "copy"
         },
+
         {
-            "x": 454,
-            "y": 20,
-            "sleep": 0.5,
-            "name": "select_item_and_close_tab",
-            "content": "",
-            "action_name": "关闭选项卡",
-        },
-        {
-            "x": 431,
-            "y": 20,
+            "x": 457,
+            "y": 23,
             "sleep": 0.5,
             "name": "move_to_click",
             "content": "",
             "action_name": "点击选项卡_pages",
         },
         {
-            "x": 468,
-            "y": 219,
+            "x": 445,
+            "y": 232,
             "sleep": 0.5,
             "name": "select_all_and_paste",
             "content": "",
             "action_name": "提交",
         },
         {
-            "x": 369,
-            "y": 332,
-            "sleep": 1,
+            "x": 586,
+            "y": 244,
+            "sleep": 0.5,
             "name": "move_to_click",
             "content": "",
             "action_name": "submit",
