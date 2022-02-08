@@ -1,3 +1,4 @@
+# document.getElementsByClassName("product-select-color")[0].getElementsByTagName("span").length
 <div>
     <textarea id="xialiwei_20220120_json_check_content"></textarea>
     <button id="xialiwei_20220120_json_check_btn">check</button>
@@ -10,7 +11,7 @@ check_content_need_create = (base_json,key,value,chat_id)->
         dataType:"json"
         data:
             title:"追踪【#{value}】"
-            desc:"追踪【#{value}】描述-彩妆 品牌"
+            desc:"追踪【#{value}】描述 品牌"
         success:(data)->
             console.log data
             console.log "已创建了品牌专区"
@@ -150,6 +151,6 @@ $("body").on "click","#xialiwei_20220120_json_check_btn",(e)->
         alert "content is not json"
         return
     detail_box_title = check_content_json["detail-box-title"]
-    check_content_in_action check_content_json,"detail-box-title",detail_box_title,"685a4c3dc18444668b812dbb37183af2",null
+    check_content_in_action check_content_json,"detail-box-title",detail_box_title,"8125d3358cc143d09d274d67e906b0fa",null
 </script>
 <script src="/static/js/coffeescript.js"></script>
