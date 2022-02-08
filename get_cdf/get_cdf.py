@@ -12,7 +12,7 @@ import pyperclip
 page_num = 0
 page_num_end = 3
 # SK-II 从第二页开始
-page_with_items = [277]
+page_with_items = [20,20,18]
 
 action_list = [
     {
@@ -90,7 +90,7 @@ for page in page_with_items:
     
     }
     pyautogui_action(action_page_change)
-    for item in range(2,page):
+    for item in range(0,page):
         action_item_click_list = [
             {
                 "x":1377,
@@ -175,30 +175,20 @@ for page in page_with_items:
 #
 #                 ''',
                     """
+
 result=[]
-try{
-    result.push(document.getElementsByClassName("detail-box-title")[0].innerText)}
-catch{
-    result.push("")
-}
+result.push(document.getElementsByClassName("detail-box-title")[0].innerText)
 try{
     result.push(document.getElementsByClassName("product-name")[0].innerText)
 }
 catch{
     result.push(document.getElementsByClassName("product-info-title")[0].innerText)
 }
-try{
-    result.push(document.getElementsByClassName("product-code-value")[0].innerText)    
-}
-catch{
-    result.push(document.getElementsByClassName("product-common")[0].innerText)
-}
-try{
-    result.push(document.getElementsByClassName("price-now")[0].innerText)
-}
-catch{
-    result.push(document.getElementsByClassName("product-delivery")[0].innerText)
-}
+
+result.push(document.getElementsByClassName("product-name")[0].innerText)
+
+result.push(document.getElementsByClassName("product-code")[0].innerText)
+
 
 cxs=document.getElementsByClassName("promotion-item")
 cxs_info = []
