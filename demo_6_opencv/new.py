@@ -13,8 +13,7 @@ title_text = [
     '火速收藏👍',
     '新年红包准备中...',
     '绝绝子的!口红💄',
-    '虎年限定新品!感觉是吃席讨红包色!',
-    ''
+    '虎年限定新品!感觉是吃席讨红包色!'
 ]
 content_text = [
     'YSL_12_Corail&&💄YSL_80_Chili',
@@ -71,6 +70,7 @@ print(two)
 print(three)
 print(original)
 for a,b,c,d in zip(one,two,three,original_list):
+
     now_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     if __name__ == '__main__':
         set_file_time(f'D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{a}', now_time, now_time)
@@ -82,11 +82,15 @@ for a,b,c,d in zip(one,two,three,original_list):
     os.system(f'adb -s 869e65410721 push D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{c} /sdcard/DCIM/Camera')
     os.system(f'adb -s 869e65410721 push D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/afterWork/original/{d} /sdcard/DCIM/Camera')
     print(a,b,c,d)
-    time.sleep(5)
-    os.system('adb -s 869e65410721 shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Camera/')
+    time.sleep(2)
+    os.remove(f'D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/afterWork/original/{d}')
+    os.remove(f'D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{a}')
+    os.remove(f'D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{b}')
+    os.remove(f'D:/github/1/hotpoor_autoclick_xhs/demo_6_opencv/final/{c}')
+
+    os.system(r'adb -s 869e65410721 shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Camera/')
     print('打开小红书\n')
     os.system("adb -s 869e65410721 shell monkey -p com.xingin.xhs -c android.intent.category.LAUNCHER 1")
-    time.sleep(8)
     print('点击小红书发布加号\n')
     os.system("adb -s 869e65410721 shell input tap 540 2151")
     time.sleep(5)

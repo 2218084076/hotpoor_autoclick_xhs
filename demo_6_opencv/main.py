@@ -89,7 +89,7 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("./data/dlib/shape_predictor_68_face_landmarks.dat")
 
 aim_list = ["MM01","MM02","MM03","MM04","MM05","MM06","MM07","MM08",'Mac chili','Mac Marrakesh','Mac Ruby woo','Mac Dubonnet','YSL 12 Corail','YSL 80 Chili']
-list = os.listdir(r'D:\github\1\hotpoor_autoclick_xhs\mac_xialiwei_256\local_web\static\upload\pic')
+list = os.listdir(r'D:\github\1\hotpoor_autoclick_xhs\demo_6_opencv\pic')
 pics =[]
 print(list)
 for i in list:
@@ -128,7 +128,7 @@ for i1 in pics:
     #
     # # -------end
     for aim in aim_list:
-        img = cv2.imread(r'D:\github\1\hotpoor_autoclick_xhs\mac_xialiwei_256\local_web\static\upload\pic\%s' % i1)
+        img = cv2.imread(r'D:\github\1\hotpoor_autoclick_xhs\demo_6_opencv\pic\%s' % i1)
         cv2.imwrite('afterWork/MM00.jpg', img)
         cv2.imwrite('afterWork/original/%s.jpg'%count, img)
         imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
