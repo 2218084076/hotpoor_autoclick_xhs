@@ -13,7 +13,7 @@ while True:
         pyautogui.moveTo(x=1703,y=940, duration=0.3)
         pyautogui.click(x=1703,y=940, button='left')
         sleep(1)
-        pyautogui.typewrite(f'document.getElementsByClassName("business-activity-container")[{n}].getElementsByTagName("button")[0].click()')
+        pyautogui.typewrite(f'document.getElementsByClassName("daren-card")[{n}].click()')
         pyautogui.keyDown('enter')
         sleep(1)
 
