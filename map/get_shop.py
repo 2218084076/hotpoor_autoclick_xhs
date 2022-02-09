@@ -125,7 +125,6 @@ function Convert_GCJ02_To_BD09($lat,$lng){
     $lat = $z * Math.sin($theta) + 0.006;
     return [$lng,$lat];
 }
-
 result.push(document.getElementsByClassName("shop-name")[0].innerText)
 result.push(document.getElementsByClassName("brief-info")[0].getElementsByTagName("span")[0].getAttribute("class").split("mid-str")[1])
 result.push(document.getElementsByClassName("brief-info")[0].getElementsByTagName("span")[1].innerText)

@@ -30,10 +30,12 @@ def get_urls():
     pyautogui.hotkey('ctrl','v')
     pyautogui.keyDown('enter')
 
-    pyperclip.copy('u=[]\n'
-                   'pics=document.getElementsByClassName("pic")\n'
-                   'for(i=0;i<pics.length;i++){\n'
-                   'u.push(pics[i].getElementsByTagName("a")[0].getAttribute("href"))}'
+    pyperclip.copy('''
+u=[]
+pics=document.getElementsByClassName("pic")
+for(i=0;i<pics.length;i++){
+u.push(pics[i].getElementsByTagName("a")[0].getAttribute("href"))}
+'''
                    )
     pyautogui.hotkey('ctrl', 'v')
     pyautogui.keyDown('enter')

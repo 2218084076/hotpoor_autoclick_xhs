@@ -2,23 +2,6 @@ import pyautogui
 import pyperclip
 import time
 
-'''
-ids=[]
-cards=document.getElementsByClassName("daren-card")
-for(i=0;i<cards.length;i++){
-ids.push(cards[i].dataset["itemUid"])
-}
-
-
-'ids=[]\n'
-'cards=document.getElementsByClassName("daren-card")\n'
-'for(i=0;i<cards.length;i++){\n'
-'if(cards[i].getElementsByTagName("div").length>30 && cards[i].getElementsByTagName("div")[30].textContent == "已邀约"){\n'
-'console.log("0")}\n'
-'else{\n'
-'ids.push(cards[i].dataset["itemUid"])\n}}'
-
-'''
 
 def pyautogui_action(action):
     if action["name"] in ["move_to_click"]:
@@ -43,7 +26,7 @@ def pyautogui_action(action):
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
         pyautogui.hotkey("ctrl", "a")
-        pyautogui.hotkey("ctrl", "c")
+        pyautogui.hotkey("ctrl", "x")
     elif action["name"] in ["select_all_and_paste"]:
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
@@ -74,49 +57,150 @@ def pyautogui_action(action):
     action_sleep = action.get("sleep",0)
     time.sleep(action_sleep)
 
-def get_id():
-    pyautogui.moveTo(x=1205,y=179,duration=0.3)
-    pyautogui.click(x=1205,y=179,button='left')
-    pyautogui.moveTo(x=1205,y=179,duration=0.3)
-    pyautogui.click(x=1205,y=179,button='left')
-
-    pyautogui.moveTo(x=1308,y=682,duration=0.3)
-    pyautogui.click(x=1308,y=682,button='left')
-
-    pyperclip.copy('''
-ids=[]cards=document.getElementsByClassName("daren-card")
-for(i=0;i<cards.length;i++){
-    ids.push(cards[i].dataset["itemUid"])
-}
-''')
-    pyautogui.hotkey('ctrl', 'v')
-    pyautogui.keyDown('enter')
 
 while True:
-    for p in range(0,20):
-        action_item_click_list = [
-            {
-                "x":1377,
-                "y":147,
-                "sleep":0.5,
-                "name":"move_to_click",
-                "content":"",
-                "action_name":"切换console",
-            },
-            {
-                "x":1204,
-                "y":172,
-                "sleep":0.5,
-                "name":"move_to_click",
-                "content":"",
-                "action_name":"清空信息console",
-            },
-            {
-                "x": 1282,
-                "y": 995,
-                "sleep": 2,
-                "name": "select_all_and_copy_and_paste",
-                "content": '',
-                "action_name": "切换产品",
-            },
-        ]
+    action_item_click_list = [
+        {
+            "x":1377,
+            "y":147,
+            "sleep":0.5,
+            "name":"move_to_click",
+            "content":"",
+            "action_name":"切换console",
+        },
+        {
+            "x":1204,
+            "y":172,
+            "sleep":0.5,
+            "name":"move_to_click",
+            "content":"",
+            "action_name":"清空信息console",
+        },
+        {
+            "x": 1282,
+            "y": 995,
+            "sleep": 2,
+            "name": "select_all_and_copy_and_paste",
+            "content":
+'''
+cards=document.getElementsByClassName("daren-card")
+agree=[]
+for (var i=0;i<cards.length;i++){
+    if (cards[i].getElementsByClassName("daren-card-status").length>0){
+        if (cards[i].getElementsByClassName("daren-card-status")[0].innerText=="已邀约"){
+        agree.push(cards[i].getAttribute("data-item-uid"))
+}
+}    
+}
+console.log(agree)
+dom=document.createElement("div")
+dom.id="wlb_cover"
+dom.style.position="fixed"
+dom.style.top="0px"
+dom.style.right="0px"
+dom.style.zIndex=9999999999999999999
+''',
+            "action_name": "获取页面所有博主ID",
+        },
+        {
+            "x": 1282,
+            "y": 995,
+            "sleep": 2,
+            "name": "select_all_and_copy_and_paste",
+            "content": r'''
+if(JSON.stringify(agree) != '[]'){
+dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(agree)+"</textarea>"
+}
+else{
+dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+ +"</textarea>"
+}
+            ''',
+            "action_name": "展示textarea文本框",
+        },
+        {
+            "x": 1282,
+            "y": 995,
+            "sleep": 0.5,
+            "name": "select_all_and_copy_and_paste",
+            "content": 'document.body.append(dom)',
+            "action_name": "展示textarea文本框"
+        },
+        {
+            "x": 1023,
+            "y": 152,
+            "sleep": 0.5,
+            "name": "esc",
+            "content": "",
+            "action_name": "esc"
+        },
+        {
+            "x": 1023,
+            "y": 152,
+            "sleep": 0.5,
+            "name": "select_all_and_copy",
+            "content": "",
+            "action_name": "copy"
+        },
+        {
+            "x": 430,
+            "y": 17,
+            "sleep": 0.5,
+            "name": "move_to_click",
+            "content": "",
+            "action_name": "点击选项卡",
+        },
+        {
+            "x": 527,
+            "y": 196,
+            "sleep": 1,
+            "name": "select_all_and_paste",
+            "content": '',
+            "action_name": "粘贴"
+        },
+        {
+            "x": 400,
+            "y": 282,
+            "sleep": 0.5,
+            "name": "move_to_click",
+            "content": "",
+            "action_name": "submit",
+        },
+        {
+            "x": 97,
+            "y": 21,
+            "sleep": 0.5,
+            "name": "move_to_click",
+            "content": "",
+            "action_name": "切换console",
+        },
+        {
+            "x": 1204,
+            "y": 172,
+            "sleep": 0.5,
+            "name": "move_to_click",
+            "content": "",
+            "action_name": "清空信息console",
+        },
+        {
+            "x": 1282,
+            "y": 995,
+            "sleep": 1,
+            "name": "select_all_and_copy_and_paste",
+            "content": 'document.getElementsByClassName("ant-pagination-item-link")[2].click()',
+            "action_name": "下一页"
+        },
+    ]
+    for action_item_click in action_item_click_list:
+        pyautogui_action(action_item_click)
+
+
+'''
+cards=document.getElementsByClassName("daren-card")
+agree=[]
+for (var i=0;i<cards.length;i++){       
+    if(cards[i].getElementsByTagName("div").length==32){
+        if(cards[i].getElementsByTagName("div")[31].innerText=="同意合作"){
+            agree.push(cards[i].getAttribute("data-item-uid"))
+        else if()
+}}}
+'''
