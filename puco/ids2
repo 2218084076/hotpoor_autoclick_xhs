@@ -1,0 +1,23 @@
+result=[]
+result.push(document.getElementsByClassName("daren-overview-base-nameblock")[0].innerText)
+result.push(document.getElementsByClassName("daren-overview-base-basepoints__block-value")[2].innerText
+result.push(document.getElementsByClassName("data-overview-dashboard-items-item__value")[3].innerText)
+try{
+result.push(document.getElementsByClassName("contact_way_info_block_item")[0].innerText.split("微信号")[1])
+}catch{
+    result.push(" ")}
+try{
+result.push(document.getElementsByClassName("contact_way_info_block_item")[0].innerText.split("微信号")[1])
+}catch{
+    result.push(" ")}
+result.push(document.getElementsByClassName("daren-overview-base-info__content-item")[2].innerText)
+result.push(document.getElementsByClassName("qrcode-content-info-account")[0].innerText)
+result_info={
+    "name":result[0],
+    "fan":result[1],
+    "shop":result[2],
+    "wechat":result[3],
+    "phone":result[4],
+    "introduce":result[5],
+    "dou_id":result[6],
+}
