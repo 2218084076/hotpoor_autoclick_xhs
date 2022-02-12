@@ -44,7 +44,7 @@ def pyautogui_action(action):
     action_sleep = action.get("sleep",0)
     time.sleep(action_sleep)
 # while True:
-for u in range(3,20):
+for u in range(0,1):
     for i in range(0,20):
         action_item_click_list = [
             {
@@ -66,7 +66,7 @@ for u in range(3,20):
             {
                 "x": 1282,
                 "y": 995,
-                "sleep": 2,
+                "sleep": 5,
                 "name": "select_all_and_copy_and_paste",
                 "content":'document.getElementsByClassName("daren-card")[%s].click()'%(i),
                 "action_name": "点击博主页面",
@@ -74,7 +74,7 @@ for u in range(3,20):
             {
                 "x": 427,
                 "y": 21,
-                "sleep": 1,
+                "sleep": 0.5,
                 "name": "open_console",
                 "content": '',
                 "action_name": "打开console"
@@ -82,7 +82,7 @@ for u in range(3,20):
             {
                 "x": 193,
                 "y": 261,
-                "sleep": 1,
+                "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
                 "action_name": "点击抖音号",
@@ -90,7 +90,7 @@ for u in range(3,20):
             {
                 "x": 193,
                 "y": 261,
-                "sleep": 1,
+                "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
                 "action_name": "点击抖音号",
@@ -98,7 +98,7 @@ for u in range(3,20):
             {
                 "x": 1204,
                 "y": 172,
-                "sleep": 1,
+                "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
                 "action_name": "清空信息console",
@@ -106,7 +106,7 @@ for u in range(3,20):
             {
                 "x": 1282,
                 "y": 995,
-                "sleep": 2,
+                "sleep": 1,
                 "name": "select_all_and_copy_and_paste",
                 "content":     '''  
 result=[]
@@ -114,13 +114,13 @@ result.push(document.getElementsByClassName("daren-overview-base-nameblock")[0].
 result.push(document.getElementsByClassName("daren-overview-base-basepoints__block-value")[2].innerText)
 result.push(document.getElementsByClassName("data-overview-dashboard-items-item__value")[3].innerText)
 try{
-result.push(document.getElementsByClassName("contact_way_info_block_item")[0].innerText.split("微信号")[1])
+result.push(document.getElementsByClassName("contact_way_info_block_item")[0].innerText)
 }catch{
-    result.push(" ")}
+    result.push("no wechat")}
 try{
-result.push(document.getElementsByClassName("contact_way_info_block_item")[0].innerText.split("微信号")[1])
+result.push(document.getElementsByClassName("contact_way_info_block_item")[1].innerText)
 }catch{
-    result.push(" ")}
+    result.push("no phone")}
 result.push(document.getElementsByClassName("daren-overview-base-info__content-item")[2].innerText)
 result.push(document.getElementsByClassName("qrcode-content-info-account")[0].innerText)
 result_info={
@@ -139,15 +139,13 @@ dom.style.position="fixed"
 dom.style.top="0px"
 dom.style.right="0px"
 dom.style.zIndex=9999999999999999999
-dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"
-document.body.append(dom)
     ''',
                 "action_name": "获取信息",
             },
             {
                 "x": 1282,
                 "y": 995,
-                "sleep": 0.5,
+                "sleep": 1,
                 "name": "select_all_and_copy_and_paste",
                 "content": rf'dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"',
                 "action_name": "展示textarea文本框"
@@ -155,7 +153,7 @@ document.body.append(dom)
             {
                 "x": 1282,
                 "y": 995,
-                "sleep": 0.5,
+                "sleep": 1,
                 "name": "select_all_and_copy_and_paste",
                 "content": 'document.body.append(dom)',
                 "action_name": "展示textarea文本框"
@@ -163,7 +161,7 @@ document.body.append(dom)
             {
                 "x": 1023,
                 "y": 152,
-                "sleep": 0.5,
+                "sleep": 1,
                 "name": "select_all_and_copy",
                 "content": "",
                 "action_name": "copy"
@@ -171,7 +169,7 @@ document.body.append(dom)
             {
                 "x": 430,
                 "y": 14,
-                "sleep": 0.5,
+                "sleep": 1,
                 "name": "select_item_and_close_tab",
                 "content": "",
                 "action_name": "select_item_and_close_tab"
@@ -185,16 +183,16 @@ document.body.append(dom)
                 "action_name": "切换console",
             },
             {
-                "x": 527,
-                "y": 196,
+                "x": 540,
+                "y": 248,
                 "sleep": 1,
                 "name": "select_all_and_paste",
                 "content": '',
                 "action_name": "粘贴"
             },
             {
-                "x": 400,
-                "y": 282,
+                "x": 412,
+                "y": 311,
                 "sleep": 0.5,
                 "name": "move_to_click",
                 "content": "",
@@ -224,7 +222,7 @@ document.body.append(dom)
         "y": 995,
         "sleep": 1,
         "name": "select_all_and_copy_and_paste",
-        "content": 'document.getElementsByClassName("ant-pagination-item-link")[2].click()',
+        "content": 'document.getElementsByClassName("ant-pagination-item-link")[3].click()',
         "action_name": "下一页"
     }]
     for click in next:
