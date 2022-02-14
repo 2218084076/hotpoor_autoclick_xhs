@@ -45,7 +45,7 @@ def pyautogui_action(action):
     time.sleep(action_sleep)
 # while True:
 for u in range(0,1):
-    for i in range(0,20):
+    for i in range(0,11):
         action_item_click_list = [
             {
                 "x":1377,

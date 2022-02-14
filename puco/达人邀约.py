@@ -43,7 +43,7 @@ def pyautogui_action(action):
     time.sleep(action_sleep)
 
 for n in range(0,1):
-    for i in range(0,20):
+    for i in range(16,20):
         pyautogui.moveTo(x=1209,y=178,duration=0.3)
         pyautogui.click(x=1209,y=178, button='left')
         pyautogui.moveTo(x=1209,y=178,duration=0.3)
