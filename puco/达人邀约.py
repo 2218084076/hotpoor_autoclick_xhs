@@ -43,7 +43,7 @@ def pyautogui_action(action):
     time.sleep(action_sleep)
 
 for n in range(0,1):
-    for i in range(16,20):
+    for i in range(0,20):
         pyautogui.moveTo(x=1209,y=178,duration=0.3)
         pyautogui.click(x=1209,y=178, button='left')
         pyautogui.moveTo(x=1209,y=178,duration=0.3)
@@ -55,24 +55,31 @@ for n in range(0,1):
         pyautogui.keyDown('enter')
         time.sleep(2)
         pyautogui.hotkey('f12')
-        time.sleep(1)
+        time.sleep(4)
         pyautogui.moveTo(x=1209,y=178,duration=0.3)
         pyautogui.click(x=1209,y=178, button='left')
         pyautogui.moveTo(x=1209,y=178,duration=0.3)
         pyautogui.click(x=1209,y=178,button='left')
         pyautogui.moveTo(x=1324,y=819,duration=0.3)
         pyautogui.click(x=1324,y=819,button='left')
+        time.sleep(0.5)
         pyperclip.copy('''
-if (document.getElementsByClassName("contact-btn-text sp-tooltip")[0].innerText=="发送邀约"){
-    document.getElementsByClassName("contact-btn-text sp-tooltip")[0].click()
-    document.getElementsByClassName("add-product-last-operate")[0].click()
-    setTimeout(function(){
-    document.getElementsByClassName("drawer-footer-default")[0].getElementsByClassName("ant-btn ant-btn-primary")[0].click()
-                        },1000)
-                    }
+
+if (document.getElementsByClassName("contact-btn")[0].innerText=="发送邀约"||document.getElementsByClassName("contact-btn")[0].getElementsByClassName("contact-btn-text text4")[0].innerText=="发送邀约"){
+document.getElementsByClassName("daren-overview-base-contact")[0].getElementsByClassName("contact-btn")[0].click()
+document.getElementsByClassName("add-product")[0].getElementsByTagName("button")[0].click()
+document.getElementsByClassName("auxo-table-selection")[0].getElementsByTagName("span")[0].click()
+document.getElementsByClassName("add-product__footer-wrapper")[0].getElementsByTagName("button")[0].click()
+setTimeout(function(){
+document.getElementsByClassName("auxo-drawer-footer-buttons")[0].getElementsByTagName("button")[0].click()
+                    },1000)}
         '''
         )
         pyautogui.hotkey('ctrl','v')
+        time.sleep(0.5)
+        pyautogui.keyDown('enter')
+        pyautogui.hotkey('ctrl','v')
+        time.sleep(0.5)
         pyautogui.keyDown('enter')
         time.sleep(8)
         pyautogui.hotkey('ctrl', 'w')
@@ -86,6 +93,7 @@ if (document.getElementsByClassName("contact-btn-text sp-tooltip")[0].innerText=
     pyperclip.copy('document.getElementsByClassName("ant-pagination-item-link")[2].click()')
     pyautogui.hotkey('ctrl', 'v')
     pyautogui.keyDown('enter')
+    print(i)
     time.time(1)
 
 '''

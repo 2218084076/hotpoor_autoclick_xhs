@@ -6,7 +6,8 @@ import json
 filename = r"D:\github\1\hotpoor_autoclick_xhs\费用报销单模板-12月.xls"
 filename1=r"D:\github\1\hotpoor_autoclick_xhs\费用报销单模板-12月.xlsx"
 filename2=r"D:\github\1\hotpoor_autoclick_xhs\12月统计新总表(4)(1).xls"
-book = xlrd.open_workbook(filename2, formatting_info=True)
+book = xlrd.open_workbook(filename1)
+# ,formatting_info=True
 sheet_1 = book.sheet_by_index(0)
 rowNum = sheet_1.nrows  # sheet行数
 colNum = sheet_1.ncols  # sheet列数
@@ -90,7 +91,7 @@ def reader():
         f.write(string)
     print('c=',merged_cells)
 reader()
-
+'''
 BG_list=[]
 for i in range(0,rowNum):
     for j in range(0,colNum):
@@ -181,3 +182,5 @@ for row in range(0,sheet_1.nrows):
                 }
                 font_size.append(data_json)
 print('font_align=',font_align)
+
+'''
