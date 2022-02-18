@@ -63,9 +63,7 @@ for n in range(0,1):
         pyautogui.moveTo(x=1324,y=819,duration=0.3)
         pyautogui.click(x=1324,y=819,button='left')
         time.sleep(0.5)
-        pyperclip.copy('''
-
-if (document.getElementsByClassName("contact-btn")[0].innerText=="发送邀约"||document.getElementsByClassName("contact-btn")[0].getElementsByClassName("contact-btn-text text4")[0].innerText=="发送邀约"){
+        pyperclip.copy('''if (document.getElementsByClassName("contact-btn")[0].innerText=="发送邀约"||document.getElementsByClassName("contact-btn")[0].getElementsByClassName("contact-btn-text text4")[0].innerText=="发送邀约"){
 document.getElementsByClassName("daren-overview-base-contact")[0].getElementsByClassName("contact-btn")[0].click()
 document.getElementsByClassName("add-product")[0].getElementsByTagName("button")[0].click()
 document.getElementsByClassName("auxo-table-selection")[0].getElementsByTagName("span")[0].click()
@@ -90,10 +88,11 @@ document.getElementsByClassName("auxo-drawer-footer-buttons")[0].getElementsByTa
     pyautogui.click(x=1209, y=178, button='left')
     pyautogui.moveTo(x=1324, y=819, duration=0.3)
     pyautogui.click(x=1324, y=819, button='left')
-    pyperclip.copy('document.getElementsByClassName("ant-pagination-item-link")[2].click()')
+    pyperclip.copy('document.getElementsByClassName("auxo-pagination-item-link")[2].click()')
     pyautogui.hotkey('ctrl', 'v')
     pyautogui.keyDown('enter')
     print(i)
+    print('document.getElementsByClassName("daren-card")[%s].click()'%(i))
     time.time(1)
 
 '''
