@@ -122,8 +122,8 @@ $ ->
                 dom.text("查询")
                 if data.info == "ok"
                     result = data.result
-                    title = result["title"].toLocaleUpperCase().replaceAll("PUCO","唇泥")
-                    content = result["content"].toLocaleUpperCase().replaceAll("PUCO","唇泥")
+                    title = result["title"].toLocaleUpperCase().replaceAll("PUCO","口红博主").replaceAll("唇泥","唇釉")
+                    content = result["content"].toLocaleUpperCase().replaceAll("PUCO","口红博主").replaceAll("唇泥","唇釉")
                     $("input[data-name=json_file]").val(result["t"])
                     $("input[data-name=article_title]").val(title)
                     $("textarea[data-name=article_content]").val(content)

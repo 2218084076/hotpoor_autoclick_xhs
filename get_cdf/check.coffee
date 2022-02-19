@@ -4,6 +4,7 @@
     <button id="xialiwei_20220120_json_check_btn">check</button>
 </div>
 <script type="text/coffeescript">
+
 check_content_need_create = (base_json,key,value,chat_id)->
     $.ajax
         url:"/api/page/add"
