@@ -12,7 +12,7 @@ import pyperclip
 page_num = 0
 page_num_end = 3
 # SK-II 从第二页开始
-page_with_items = [20,20,18]
+page_with_items = [20,20,20,2]
 
 action_list = [
     {
@@ -175,7 +175,6 @@ for page in page_with_items:
 #
 #                 ''',
                     """
-
 result=[]
 result.push(document.getElementsByClassName("detail-box-title")[0].innerText)
 try{
@@ -218,6 +217,8 @@ dom.style.position="fixed"
 dom.style.top="0px"
 dom.style.right="0px"
 dom.style.zIndex=9999999999999999999
+dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"
+document.body.append(dom)
                 """,
                 "action_name":"执行获取内容的JS",
             },
