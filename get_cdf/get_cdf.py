@@ -48,7 +48,7 @@ def pyautogui_action(action):
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
         pyautogui.hotkey("ctrl", "a")
-        pyautogui.hotkey("ctrl", "c")
+        pyautogui.hotkey("ctrl", "x")
     elif action["name"] in ["select_all_and_paste"]:
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
@@ -71,6 +71,10 @@ def pyautogui_action(action):
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
         pyautogui.hotkey("f12")
+    elif action["name"] in ["refresh"]:
+        pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
+        pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
+        pyautogui.hotkey("f5")
     elif action["name"] in ["esc"]:
         pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
         pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
@@ -78,7 +82,6 @@ def pyautogui_action(action):
     print(action.get("action_name"))
     action_sleep = action.get("sleep",0)
     time.sleep(action_sleep)
-
 for page in page_with_items:
     action_page_change = {
         "x":127,
@@ -87,7 +90,6 @@ for page in page_with_items:
         "name":"move_to_click",
         "content":"",
         "action_name":"点击选项卡",
-    
     }
     pyautogui_action(action_page_change)
     for item in range(0,page):
@@ -148,46 +150,12 @@ for page in page_with_items:
                 "sleep":0.5,
                 "name":"select_all_and_copy_and_paste",
                 "content":
-#                 '''
-#
-# result=[]
-# result.push("海蓝之谜")
-# result.push(document.getElementsByClassName("product-name")[0].innerText)
-# result.push(document.getElementsByClassName("product-code-value")[0].innerText)
-# result.push(document.getElementsByClassName("price-now")[0].innerText)
-#
-# cxs=document.getElementsByClassName("promotion-item")
-# cxs_info = []
-# for (i=0;i<cxs.length;i++){
-#     cxs_info.push(cxs[i].innerText)
-# }
-# ths=document.getElementsByClassName("property-item-title")
-# tds=document.getElementsByClassName("property-item-value")
-# kv=document.getElementsByClassName("product-properties detail-tab-pro-info")[0].innerText
-# result_info = {
-#     "detail-box-title":result[0],
-#     "product-name":result[1],
-#     "product-code-value":result[2],
-#     "price-now":result[3],
-#     "promotion-item":cxs_info,
-#     "property-item":kv,
-# }
-#
-#                 ''',
                     """
 result=[]
 result.push(document.getElementsByClassName("detail-box-title")[0].innerText)
-try{
-    result.push(document.getElementsByClassName("product-name")[0].innerText)
-}
-catch{
-    result.push(document.getElementsByClassName("product-info-title")[0].innerText)
-}
-
 result.push(document.getElementsByClassName("product-name")[0].innerText)
-
-result.push(document.getElementsByClassName("product-code")[0].innerText)
-
+result.push(document.getElementsByClassName("product-code-value")[0].innerText)
+result.push(document.getElementsByClassName("price-now")[0].innerText)
 
 cxs=document.getElementsByClassName("promotion-item")
 cxs_info = []
@@ -196,13 +164,11 @@ for (i=0;i<cxs.length;i++){
 }
 ths=document.getElementsByClassName("property-item-title")
 tds=document.getElementsByClassName("property-item-value")
-try{
-    kv={}
-    for (i=0;i<ths.length;i++){
+kv={}
+for (i=0;i<ths.length;i++){
     kv[ths[i].innerText]=tds[i].innerText
-    }}
-catch{
-    kv=document.getElementsByClassName("product-properties detail-tab-pro-info")[0].innerText}
+}
+
 result_info = {
     "detail-box-title":result[0],
     "product-name":result[1],
@@ -216,32 +182,10 @@ dom.id="wlb_cover"
 dom.style.position="fixed"
 dom.style.top="0px"
 dom.style.right="0px"
-dom.style.zIndex=9999999999999999999
 dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"
 document.body.append(dom)
                 """,
                 "action_name":"执行获取内容的JS",
-            },
-            # document.getElementsByClassName("detail-box-title")[0].innerText
-            # document.getElementsByClassName("product-name")[0].innerText
-            # document.getElementsByClassName("product-code-value")[0].innerText
-            # document.getElementsByClassName("price-now")[0].innerText
-            # console.log(result_info)
-            {
-                "x": 1282,
-                "y": 995,
-                "sleep": 0.5,
-                "name": "select_all_and_copy_and_paste",
-                "content": r'dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"',
-                "action_name": "获取商品信息"
-            },
-            {
-                "x":1282,
-                "y":995,
-                "sleep": 0.5,
-                "name": "select_all_and_copy_and_paste",
-                "content":'document.body.append(dom)',
-                "action_name":"获取商品信息"
             },
             {
                 "x":1023,
@@ -382,5 +326,12 @@ result_info = {
     "promotion-item":cxs_info,
     "property-item":kv,
 }
-console.log(result_info)
+dom=document.createElement("div")
+dom.id="wlb_cover"
+dom.style.position="fixed"
+dom.style.top="0px"
+dom.style.right="0px"
+dom.innerHTML="<textarea id=\"wlb_cover_textarea\">"+JSON.stringify(result_info)+"</textarea>"
+document.body.append(dom)
 '''
+
